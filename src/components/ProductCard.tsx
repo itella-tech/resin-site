@@ -40,7 +40,7 @@ export const ProductCard = ({ id, title, price, image, category }: ProductCardPr
           </p>
           <div className="flex justify-between items-center w-full mt-auto">
             <span className="text-2xl font-bold text-ocean-dark">¥{price.toLocaleString()}</span>
-            <Link to={`/product/${id}`}>
+            <Link to={`/products/${id}`}>
               <Button className="bg-ocean hover:bg-ocean-dark text-white">
                 VIEW MORE
               </Button>

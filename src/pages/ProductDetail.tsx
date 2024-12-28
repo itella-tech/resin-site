@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Footer } from "@/components/Footer";
 
 const ProductDetail = () => {
@@ -25,7 +25,7 @@ const ProductDetail = () => {
       レジンアート制作にて使用する一つ一つの材料は厳選されており、作品をより素敵に、特別なものにしております！
       一緒に素敵な思い出を作りましょう♪
 
-      ⭐️制作からお渡しまで⭐️
+      ⭐���制作からお渡しまで⭐️
 
       1.制作のレクチャー
 
@@ -60,7 +60,7 @@ const ProductDetail = () => {
       ・場所：石垣島の内江
     `,
     highlights: [
-      "制作時間30分からOKなので気軽に参加できる！",
+      "制作���間30分からOKなので気軽に参加できる！",
       "お子様から大人まで楽しめる！",
       "オリジナルデザインで世界に一つだけの作品に！",
       "レジンアートで思い出を形に！",
@@ -83,12 +83,16 @@ const ProductDetail = () => {
       {/* Header */}
       <header className="bg-white border-b border-gray-100">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center py-4">
+          <div className="flex items-center justify-between py-4">
+            <Link to="/" className="text-gray-600 hover:text-gray-900">
+              ← 戻る
+            </Link>
             <h1 className="text-2xl font-bold">
-              <a href="/" className="text-gray-900">
+              <Link to="/" className="text-gray-900">
                 れじこら工房
-              </a>
+              </Link>
             </h1>
+            <div className="w-16"></div> {/* Spacer for alignment */}
           </div>
         </div>
       </header>
