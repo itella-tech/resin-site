@@ -8,9 +8,10 @@ interface ProductCardProps {
   price: number;
   image: string;
   category: string;
+  description: string;
 }
 
-export const ProductCard = ({ id, title, price, image, category }: ProductCardProps) => {
+export const ProductCard = ({ id, title, price, image, category, description }: ProductCardProps) => {
   return (
     <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
       <div className="flex flex-col md:flex-row">
@@ -36,7 +37,7 @@ export const ProductCard = ({ id, title, price, image, category }: ProductCardPr
           </div>
           <h3 className="font-semibold text-xl">{title}</h3>
           <p className="text-gray-600">
-            石垣島での【思い出】を形にして持ち帰りませんか？コースタープラン！誰でも簡単に素敵な作品が制作できます！
+            {description}
           </p>
           <div className="flex justify-between items-center w-full mt-auto">
             <span className="text-2xl font-bold text-ocean-dark">¥{price.toLocaleString()}</span>

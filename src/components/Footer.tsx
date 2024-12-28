@@ -18,24 +18,7 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold">クイックリンク</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="hover:text-ocean-light transition-colors">
-                  ホーム
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-ocean-light transition-colors">
-                  商品一覧
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-ocean-light transition-colors">
-                  お問い合わせ
-                </a>
-              </li>
-            </ul>
+            
           </div>
 
           {/* Contact & Social */}
