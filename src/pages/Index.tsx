@@ -1,4 +1,5 @@
 import { ProductCard } from "@/components/ProductCard";
+import { Footer } from "@/components/Footer";
 
 const products = [
   {
@@ -33,7 +34,7 @@ const products = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-sand-light">
+    <div className="min-h-screen bg-sand-light flex flex-col">
       {/* Hero Section */}
       <div className="relative h-[60vh] bg-gradient-to-r from-ocean to-ocean-light flex items-center justify-center text-white">
         <div className="absolute inset-0 overflow-hidden">
@@ -52,7 +53,7 @@ const Index = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto py-16 px-4">
+      <div className="container mx-auto py-16 px-4 flex-grow">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map((product) => (
             <div key={product.id} className="animate-fade-up">
@@ -61,6 +62,8 @@ const Index = () => {
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
