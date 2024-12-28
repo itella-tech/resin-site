@@ -95,23 +95,21 @@ const Index = () => {
                 <div className="space-y-2">
                   <h3 className="text-2xl font-semibold">アクセス</h3>
                   <p className="text-gray-600">
-                    〒907-0024<br />
-                    沖縄県石垣市新川 XXX-XX<br />
-                    石垣港離島ターミナルから徒歩10分
+                    〒907-0003<br />
+                    沖縄県石垣市平得346 OK商店<br />
+                    平得東バス停から徒歩3分
                   </p>
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-semibold">営業時間</h3>
                   <p className="text-gray-600">
                     10:00 - 18:00<br />
-                    定休日：水曜日
                   </p>
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-semibold">お問い合わせ</h3>
                   <p className="text-gray-600">
-                    TEL: 0980-XX-XXXX<br />
-                    Email: info@example.com
+                    TEL: 0980-82-3522<br />
                   </p>
                 </div>
               </div>

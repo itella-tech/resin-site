@@ -41,8 +41,7 @@ export const Footer = () => {
           {/* Contact & Social */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">お問い合わせ</h3>
-            <p className="text-gray-300">メール: info@oceanresinart.com</p>
-            <p className="text-gray-300">電話: 03-1234-5678</p>
+            <p className="text-gray-300">電話: 0980-82-3522</p>
             <div className="flex space-x-4 mt-4">
               <Button variant="ghost" size="icon" className="hover:text-ocean-light">
                 <Facebook className="h-5 w-5" />
