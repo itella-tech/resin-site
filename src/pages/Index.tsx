@@ -1,5 +1,6 @@
 import { ProductCard } from "@/components/ProductCard";
 import { Footer } from "@/components/Footer";
+import { Menu, Phone, Mail, Clock } from "lucide-react";
 
 const products = [
   {
@@ -20,7 +21,53 @@ const products = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-sand-light">
+    <div className="min-h-screen">
+      {/* Header */}
+      <header className="bg-white border-b border-gray-100">
+        <div className="container mx-auto px-4">
+          {/* Top Info Bar */}
+          <div className="flex items-center justify-between py-2 text-sm text-gray-600 border-b border-gray-100">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Phone size={14} />
+                <span>0980-XX-XXXX</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail size={14} />
+                <span>info@example.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock size={14} />
+                <span>営業時間 10:00-18:00</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <a href="#" className="hover:text-ocean">Instagram</a>
+              <a href="#" className="hover:text-ocean">Facebook</a>
+            </div>
+          </div>
+          
+          {/* Main Header */}
+          <div className="flex items-center justify-between py-4">
+            <div className="flex items-center gap-8">
+              <h1 className="text-2xl font-bold">
+                <a href="/" className="text-gray-900">
+                  Ocean Resin Art
+                </a>
+              </h1>
+              <nav className="hidden md:flex items-center gap-6">
+                <a href="#products" className="text-gray-600 hover:text-ocean">プラン・メニュー</a>
+                <a href="#access" className="text-gray-600 hover:text-ocean">アクセス</a>
+                <a href="#contact" className="text-gray-600 hover:text-ocean">お問い合わせ</a>
+              </nav>
+            </div>
+            <button className="md:hidden">
+              <Menu className="h-6 w-6 text-gray-600" />
+            </button>
+          </div>
+        </div>
+      </header>
+
       {/* Hero Section */}
       <div className="relative h-[60vh] bg-gradient-to-r from-ocean to-ocean-light flex items-center justify-center text-white">
         <div className="absolute inset-0 overflow-hidden">
