@@ -86,7 +86,7 @@ const ProductDetail = () => {
           <div className="flex items-center justify-center py-4">
             <h1 className="text-2xl font-bold">
               <a href="/" className="text-gray-900">
-                Ocean Resin Art
+                れじこら工房
               </a>
             </h1>
           </div>

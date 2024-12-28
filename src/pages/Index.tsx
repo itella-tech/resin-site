@@ -27,7 +27,7 @@ const Index = () => {
           <div className="flex items-center justify-center py-4">
             <h1 className="text-2xl font-bold">
               <a href="/" className="text-gray-900">
-                Ocean Resin Art
+                れじこら工房
               </a>
             </h1>
           </div>
@@ -38,15 +38,24 @@ const Index = () => {
       <div className="relative h-[60vh] bg-gradient-to-r from-ocean to-ocean-light flex items-center justify-center text-white">
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="/lovable-uploads/db847c28-590e-46ed-81b9-ab9e146c0d21.png"
+            src="/hero-image.png"
             alt="Hero"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-80"
           />
         </div>
-        <div className="relative text-center space-y-4 animate-fade-up">
-          <h1 className="text-5xl font-bold">Ocean-Inspired Resin Art</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            Discover unique pieces that bring the beauty of the ocean into your home
+        <div className="relative text-center space-y-8 animate-fade-up">
+          <div className="flex justify-center mb-6">
+            <img
+              src="/logo.png"
+              alt="れじこら工房"
+              className="w-64 h-auto"
+            />
+          </div>
+          <h1 className="text-4xl font-bold text-white drop-shadow-lg">
+            石垣島で海の思い出を形に
+          </h1>
+          <p className="text-xl max-w-2xl mx-auto text-white drop-shadow-md">
+            美しい海をイメージしたレジンアート体験
           </p>
         </div>
       </div>

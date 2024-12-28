@@ -9,7 +9,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold">Ocean Resin Art</h3>
+            <h3 className="text-xl font-semibold">れじこら工房</h3>
             <p className="text-gray-300">
               美しい海の世界をレジンアートで表現し、
               あなたの空間に特別な魅力を加えます。
@@ -60,7 +60,7 @@ export const Footer = () => {
         <Separator className="my-8 bg-gray-600" />
 
         <div className="text-center text-gray-400 text-sm">
-          <p>&copy; 2024 Ocean Resin Art. All rights reserved.</p>
+          <p>&copy; 2024 れじこら工房. All rights reserved.</p>
         </div>
       </div>
     </footer>
