@@ -9,7 +9,7 @@ const ProductDetail = () => {
     id: 1,
     title: "シンプルコースター！【30分〜】旅を彩るレジンアート体験！",
     price: 2500,
-    image: "/lovable-uploads/db847c28-590e-46ed-81b9-ab9e146c0d21.png",
+    image: "/ocean_board.jpg",
     category: "石垣島の内江, 手作り体験, コースター, オリジナルボード, ハンドメイド",
     description: `
       石垣島での【思い出】を形にして持ち帰りませんか？コースタープラン！誰でも簡単に素敵な作品が制作できます！
@@ -25,7 +25,7 @@ const ProductDetail = () => {
       レジンアート制作にて使用する一つ一つの材料は厳選されており、作品をより素敵に、特別なものにしております！
       一緒に素敵な思い出を作りましょう♪
 
-      ⭐���制作からお渡しまで⭐️
+      ⭐️制作からお渡しまで⭐️
 
       1.制作のレクチャー
 
@@ -60,7 +60,7 @@ const ProductDetail = () => {
       ・場所：石垣島の内江
     `,
     highlights: [
-      "制作���間30分からOKなので気軽に参加できる！",
+      "制作時間30分からOKなので気軽に参加できる！",
       "お子様から大人まで楽しめる！",
       "オリジナルデザインで世界に一つだけの作品に！",
       "レジンアートで思い出を形に！",
@@ -92,7 +92,7 @@ const ProductDetail = () => {
                 れじこら工房
               </Link>
             </h1>
-            <div className="w-16"></div> {/* Spacer for alignment */}
+            <div className="w-16"></div>
           </div>
         </div>
       </header>

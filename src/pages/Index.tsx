@@ -6,14 +6,14 @@ const products = [
     id: 1,
     title: "シンプルコースター！【30分〜】旅を彩るレジンアート体験！",
     price: 2500,
-    image: "/lovable-uploads/db847c28-590e-46ed-81b9-ab9e146c0d21.png",
+    image: "/ocean_board.jpg",
     category: "石垣島の内江, 手作り体験, コースター, オリジナルボード, ハンドメイド, ものづくり体験, お土産体験",
   },
   {
     id: 2,
     title: "オリジナルコースター！【30分〜】デザインを選べる！子供にも大人気！",
     price: 3000,
-    image: "/lovable-uploads/db847c28-590e-46ed-81b9-ab9e146c0d21.png",
+    image: "/couple_board.jpg",
     category: "石垣島の内江, 手作り体験, コースター, オリジナルボード, ハンドメイド",
   },
 ];
