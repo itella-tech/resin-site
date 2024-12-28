@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { ProductCard } from "@/components/ProductCard";
-import { CategoryFilter } from "@/components/CategoryFilter";
 
 const products = [
   {
@@ -33,15 +31,7 @@ const products = [
   },
 ];
 
-const categories = ["All", "Wall Art", "Table Art"];
-
 const Index = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const filteredProducts = products.filter(
-    (product) => activeCategory === "All" || product.category === activeCategory
-  );
-
   return (
     <div className="min-h-screen bg-sand-light">
       {/* Hero Section */}
@@ -63,14 +53,8 @@ const Index = () => {
 
       {/* Main Content */}
       <div className="container mx-auto py-16 px-4">
-        <CategoryFilter
-          categories={categories}
-          activeCategory={activeCategory}
-          onCategoryChange={setActiveCategory}
-        />
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
+          {products.map((product) => (
             <div key={product.id} className="animate-fade-up">
               <ProductCard {...product} />
             </div>
