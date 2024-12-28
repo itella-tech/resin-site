@@ -49,11 +49,26 @@ const Index = () => {
           <p className="text-xl max-w-2xl mx-auto">
             Discover unique pieces that bring the beauty of the ocean into your home
           </p>
+          {/* Vertical Menu */}
+          <div className="flex flex-col space-y-4 mt-8">
+            <a
+              href="#products"
+              className="bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-lg transition-colors duration-300"
+            >
+              商品一覧
+            </a>
+            <a
+              href="#contact"
+              className="bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-lg transition-colors duration-300"
+            >
+              お問い合わせ
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto py-16 px-4 flex-grow">
+      <div id="products" className="container mx-auto py-16 px-4 flex-grow">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map((product) => (
             <div key={product.id} className="animate-fade-up">
