@@ -1,14 +1,16 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
+  id: number;
   title: string;
   price: number;
   image: string;
   category: string;
 }
 
-export const ProductCard = ({ title, price, image, category }: ProductCardProps) => {
+export const ProductCard = ({ id, title, price, image, category }: ProductCardProps) => {
   return (
     <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
       <div className="flex flex-col md:flex-row">
@@ -38,9 +40,11 @@ export const ProductCard = ({ title, price, image, category }: ProductCardProps)
           </p>
           <div className="flex justify-between items-center w-full mt-auto">
             <span className="text-2xl font-bold text-ocean-dark">¥{price.toLocaleString()}</span>
-            <Button className="bg-ocean hover:bg-ocean-dark text-white">
-              VIEW MORE
-            </Button>
+            <Link to={`/product/${id}`}>
+              <Button className="bg-ocean hover:bg-ocean-dark text-white">
+                VIEW MORE
+              </Button>
+            </Link>
           </div>
         </CardFooter>
       </div>
