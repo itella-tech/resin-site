@@ -6,19 +6,19 @@ interface ProductCardProps {
   id: number;
   title: string;
   price: number;
-  image: string;
+  images: string[];
   category: string;
   description: string;
 }
 
-export const ProductCard = ({ id, title, price, image, category, description }: ProductCardProps) => {
+export const ProductCard = ({ id, title, price, images, category, description }: ProductCardProps) => {
   return (
     <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
       <div className="flex flex-col md:flex-row">
         <CardContent className="p-0 relative md:w-1/3">
           <div className="aspect-square overflow-hidden">
             <img
-              src={image}
+              src={images[0]}
               alt={title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />

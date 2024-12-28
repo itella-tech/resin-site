@@ -6,7 +6,10 @@ const products = [
     id: 1,
     title: "シンプルレジンアート！【1時間30分】海を彩るレジンアート体験！",
     price: 6000,
-    image: "/ocean_board.jpg",
+    images: [
+      "/ocean_board.jpg",
+      "/ocean_board_1.jpg"
+    ],
     category: "石垣島雨の日, 手作り体験, コースター, オリジナルボード, ハンドメイド, ものづくり体験, 石垣島体験, レジンアート体験, カップル, 家族, 新婚旅行",
     description: `
       石垣島の美しい海をイメージしたレジンアートで、世界に一つだけのアートボードを作りましょう！
@@ -61,7 +64,10 @@ const products = [
     id: 2,
     title: "フォトレジンアート！【1時間30分】思い出の写真をレジンアートに！",
     price: 10000,
-    image: "/couple_board.jpg",
+    images: [
+      "/couple_board.jpg",
+      "/couple_board2.jpg"
+    ],
     category: "石垣島雨の日, 手作り体験, コースター, オリジナルボード, ハンドメイド, ものづくり体験, 石垣島体験, レジンアート体験, カップル, 家族, 新婚旅行",
     description: `
       大切な思い出の写真をレジンアートに閉じ込めて、特別な作品を作りましょう！
@@ -152,16 +158,14 @@ const ProductDetail = () => {
 
           {/* Images Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-64 object-cover rounded-lg"
-            />
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-64 object-cover rounded-lg"
-            />
+            {product.images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`${product.title} - ${index + 1}`}
+                className="w-full h-64 object-cover rounded-lg"
+              />
+            ))}
           </div>
 
           {/* Price Section */}
