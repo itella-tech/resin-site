@@ -4,31 +4,17 @@ import { Footer } from "@/components/Footer";
 const products = [
   {
     id: 1,
-    title: "Ocean Wave Resin Art",
-    price: 129.99,
+    title: "シンプルコースター！【30分〜】旅を彩るレジンアート体験！",
+    price: 2500,
     image: "/lovable-uploads/db847c28-590e-46ed-81b9-ab9e146c0d21.png",
-    category: "Wall Art",
+    category: "石垣島の内江, 手作り体験, コースター, オリジナルボード, ハンドメイド, ものづくり体験, お土産体験",
   },
   {
     id: 2,
-    title: "Beach Sunset Scene",
-    price: 149.99,
+    title: "オリジナルコースター！【30分〜】デザインを選べる！子供にも大人気！",
+    price: 3000,
     image: "/lovable-uploads/db847c28-590e-46ed-81b9-ab9e146c0d21.png",
-    category: "Wall Art",
-  },
-  {
-    id: 3,
-    title: "Tropical Paradise",
-    price: 99.99,
-    image: "/lovable-uploads/db847c28-590e-46ed-81b9-ab9e146c0d21.png",
-    category: "Table Art",
-  },
-  {
-    id: 4,
-    title: "Coral Reef Display",
-    price: 179.99,
-    image: "/lovable-uploads/db847c28-590e-46ed-81b9-ab9e146c0d21.png",
-    category: "Table Art",
+    category: "石垣島の内江, 手作り体験, コースター, オリジナルボード, ハンドメイド",
   },
 ];
 
@@ -69,7 +55,8 @@ const Index = () => {
 
       {/* Main Content */}
       <div id="products" className="container mx-auto py-16 px-4 flex-grow">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <h2 className="text-3xl font-bold text-center mb-12">PLAN MENU</h2>
+        <div className="space-y-8 max-w-5xl mx-auto">
           {products.map((product) => (
             <div key={product.id} className="animate-fade-up">
               <ProductCard {...product} />
