@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { Footer } from "@/components/Footer";
+import { useEffect } from "react";
 
 const products = [
   {
@@ -126,6 +127,17 @@ const products = [
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find(p => p.id === Number(id));
+
+  useEffect(() => {
+    if (product) {
+      document.title = `${product.title} | れじこら工房`;
+      // Update meta description
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', product.description.split('\n')[0]);
+      }
+    }
+  }, [product]);
 
   if (!product) {
     return <div className="container mx-auto px-4 py-8">商品が見つかりません</div>;

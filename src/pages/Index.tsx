@@ -89,7 +89,7 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               <div className="space-y-6">
                 <img
-                  src="https://images.unsplash.com/photo-1487958449943-2429e8be8625"
+                  src="/inside.jpg"
                   alt="Store Exterior"
                   className="w-full h-64 object-cover rounded-lg shadow-md"
                 />
