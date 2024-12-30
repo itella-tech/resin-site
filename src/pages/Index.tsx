@@ -1,5 +1,7 @@
 import { ProductCard } from "@/components/ProductCard";
 import { Footer } from "@/components/Footer";
+import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const products = [
   {
@@ -7,8 +9,8 @@ const products = [
     title: "シンプルレジンアート！【1時間30分】海を彩るレジンアート体験！",
     price: 6000,
     images: [
-      "/ocean_board.jpg",
-      "/ocean_board2.jpg"
+      "/ocean_board.webp",
+      "/ocean_board_1.webp"
     ],
     category: "石垣島雨の日, 手作り体験, コースター, オリジナルボード, ハンドメイド, ものづくり体験, 石垣島体験, レジンアート体験, カップル, 家族, 新婚旅行",
     description: "石垣島の美しい海をイメージしたレジンアートで、世界に一つだけのアートボードを作りましょう。初めての方でも安心して体験できます。",
@@ -18,8 +20,8 @@ const products = [
     title: "フォトレジンアート！【1時間30分】思い出の写真をレジンアートに！",
     price: 10000,
     images: [
-      "/couple_board.jpg",
-      "/couple_board2.jpg"
+      "/couple_board.webp",
+      "/couple_board2.webp"
     ],
     category: "石垣島雨の日, 手作り体験, コースター, オリジナルボード, ハンドメイド, ものづくり体験, 石垣島体験, レジンアート体験, カップル, 家族, 新婚旅行",
     description: "大切な思い出の写真をレジンアートに閉じ込めて、特別な作品を作りましょう。カップルや友達同士、家族同士で人気のプランです。",
@@ -27,6 +29,11 @@ const products = [
 ];
 
 const Index = () => {
+  const [heroLoaded, setHeroLoaded] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
+  const [storeImage1Loaded, setStoreImage1Loaded] = useState(false);
+  const [storeImage2Loaded, setStoreImage2Loaded] = useState(false);
+
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -45,18 +52,32 @@ const Index = () => {
       {/* Hero Section */}
       <div className="relative h-[60vh] bg-gradient-to-r from-ocean to-ocean-light flex items-center justify-center text-white">
         <div className="absolute inset-0 overflow-hidden">
+          {!heroLoaded && (
+            <div className="absolute inset-0 bg-ocean animate-pulse" />
+          )}
           <img
-            src="/hero-image.png"
+            src="/hero-image.webp"
             alt="Hero"
-            className="w-full h-full object-cover opacity-80"
+            loading="eager"
+            onLoad={() => setHeroLoaded(true)}
+            className={`w-full h-full object-cover opacity-80 transition-opacity duration-300 ${
+              heroLoaded ? 'opacity-80' : 'opacity-0'
+            }`}
           />
         </div>
         <div className="relative text-center space-y-8 animate-fade-up">
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-6 relative">
+            {!logoLoaded && (
+              <Skeleton className="w-64 h-24" />
+            )}
             <img
-              src="/logo.png"
+              src="/logo.webp"
               alt="れじこら工房"
-              className="w-64 h-auto"
+              loading="eager"
+              onLoad={() => setLogoLoaded(true)}
+              className={`w-64 h-auto transition-opacity duration-300 ${
+                logoLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
             />
           </div>
           <h1 className="text-4xl font-bold text-white drop-shadow-lg">
@@ -88,16 +109,34 @@ const Index = () => {
             <h2 className="text-3xl font-bold text-center mb-12">店舗案内</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               <div className="space-y-6">
-                <img
-                  src="/inside.jpg"
-                  alt="Store Exterior"
-                  className="w-full h-64 object-cover rounded-lg shadow-md"
-                />
-                <img
-                  src="/outside.jpg"
-                  alt="Store Interior"
-                  className="w-full h-64 object-cover rounded-lg shadow-md"
-                />
+                <div className="relative">
+                  {!storeImage1Loaded && (
+                    <Skeleton className="w-full h-64 rounded-lg" />
+                  )}
+                  <img
+                    src="/inside.webp"
+                    alt="Store Interior"
+                    loading="lazy"
+                    onLoad={() => setStoreImage1Loaded(true)}
+                    className={`w-full h-64 object-cover rounded-lg shadow-md transition-opacity duration-300 ${
+                      storeImage1Loaded ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                </div>
+                <div className="relative">
+                  {!storeImage2Loaded && (
+                    <Skeleton className="w-full h-64 rounded-lg" />
+                  )}
+                  <img
+                    src="/outside.webp"
+                    alt="Store Exterior"
+                    loading="lazy"
+                    onLoad={() => setStoreImage2Loaded(true)}
+                    className={`w-full h-64 object-cover rounded-lg shadow-md transition-opacity duration-300 ${
+                      storeImage2Loaded ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                </div>
               </div>
               <div className="space-y-6 flex flex-col justify-center">
                 <div className="space-y-2">

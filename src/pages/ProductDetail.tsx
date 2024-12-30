@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { Footer } from "@/components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const products = [
   {
@@ -8,8 +9,8 @@ const products = [
     title: "シンプルレジンアート！【1時間30分】海を彩るレジンアート体験！",
     price: 6000,
     images: [
-      "/ocean_board.jpg",
-      "/ocean_board_1.jpg"
+      "/ocean_board.webp",
+      "/ocean_board_1.webp"
     ],
     category: "石垣島雨の日, 手作り体験, コースター, オリジナルボード, ハンドメイド, ものづくり体験, 石垣島体験, レジンアート体験, カップル, 家族, 新婚旅行",
     description: `
@@ -66,8 +67,8 @@ const products = [
     title: "フォトレジンアート！【1時間30分】思い出の写真をレジンアートに！",
     price: 10000,
     images: [
-      "/couple_board.jpg",
-      "/couple_board2.jpg"
+      "/couple_board.webp",
+      "/couple_board2.webp"
     ],
     category: "石垣島雨の日, 手作り体験, コースター, オリジナルボード, ハンドメイド, ものづくり体験, 石垣島体験, レジンアート体験, カップル, 家族, 新婚旅行",
     description: `
@@ -127,6 +128,7 @@ const products = [
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find(p => p.id === Number(id));
+  const [loadedImages, setLoadedImages] = useState<boolean[]>([]);
 
   useEffect(() => {
     if (product) {
@@ -136,6 +138,13 @@ const ProductDetail = () => {
       if (metaDescription) {
         metaDescription.setAttribute('content', product.description.split('\n')[0]);
       }
+    }
+  }, [product]);
+
+  useEffect(() => {
+    // Initialize loadedImages array with false values
+    if (product) {
+      setLoadedImages(new Array(product.images.length).fill(false));
     }
   }, [product]);
 
@@ -171,12 +180,24 @@ const ProductDetail = () => {
           {/* Images Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {product.images.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt={`${product.title} - ${index + 1}`}
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <div key={index} className="relative">
+                {!loadedImages[index] && (
+                  <Skeleton className="absolute inset-0 h-64" />
+                )}
+                <img
+                  src={image}
+                  alt={`${product.title} - ${index + 1}`}
+                  loading="lazy"
+                  onLoad={() => {
+                    const newLoadedImages = [...loadedImages];
+                    newLoadedImages[index] = true;
+                    setLoadedImages(newLoadedImages);
+                  }}
+                  className={`w-full h-64 object-cover rounded-lg transition-opacity duration-300 ${
+                    loadedImages[index] ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              </div>
             ))}
           </div>
 
