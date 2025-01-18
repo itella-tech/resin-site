@@ -20,8 +20,8 @@ const products = [
     title: "フォトレジンアート！【1時間30分】思い出の写真をレジンアートに！",
     price: 10000,
     images: [
-      "/couple_board.webp",
-      "/couple_board2.webp"
+      "/photo_board_2.webp",
+      "/photo_board_1.webp"
     ],
     category: "石垣島雨の日, 手作り体験, コースター, オリジナルボード, ハンドメイド, ものづくり体験, 石垣島体験, レジンアート体験, カップル, 家族, 新婚旅行",
     description: "大切な思い出の写真をレジンアートに閉じ込めて、特別な作品を作りましょう。カップルや友達同士、家族同士で人気のプランです。",
