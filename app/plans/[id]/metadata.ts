@@ -7,9 +7,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const product = await Promise.resolve(params).then((params) => products.find((p) => String(p.id) === params.id));
-  
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const product = products.find((p) => String(p.id) === id);
+
   if (!product) {
     return {
       title: '商品が見つかりません | れじこら工房',

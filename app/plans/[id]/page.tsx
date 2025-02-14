@@ -3,11 +3,12 @@ import { notFound } from "next/navigation";
 import { PlanDetail } from "./PlanDetail";
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export default async function PlanDetailPage({ params }: Props) {
-  const product = await Promise.resolve(params).then((params) => products.find((p) => String(p.id) === params.id));
+  const { id } = await params;
+  const product = products.find((p) => String(p.id) === id);
 
   if (!product) {
     return notFound();
