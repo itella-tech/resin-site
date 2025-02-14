@@ -2,6 +2,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Footer } from "@/components/Footer";
 import Image from "next/image";
 import type { Metadata } from 'next'
+import Link from 'next/link';
 
 const products = [
   {
@@ -41,9 +42,9 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center py-4">
             <h1 className="text-2xl font-bold">
-              <a href="/" className="text-gray-900">
+              <Link href="/" className="text-gray-900">
                 れじこら工房
-              </a>
+              </Link>
             </h1>
           </div>
         </div>
