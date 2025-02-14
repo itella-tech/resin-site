@@ -58,6 +58,7 @@ export default function Home() {
             alt="Hero"
             fill
             fetchPriority="high"
+            loading="eager"
             className="object-cover opacity-100"
           />
         </div>
