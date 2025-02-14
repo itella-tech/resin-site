@@ -57,8 +57,8 @@ export default function Home() {
             src="/hero-image.webp"
             alt="Hero"
             fill
-            priority
-            className="object-cover opacity-80"
+            fetchPriority="high"
+            className="object-cover opacity-100"
           />
         </div>
         <div className="relative text-center space-y-8 animate-fade-up">
@@ -135,6 +135,7 @@ export default function Home() {
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
+                      title="れじこら工房 Google マップ"
                     ></iframe>
                   </div>
                 </div>
