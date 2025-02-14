@@ -1,6 +1,7 @@
 import { ProductCard } from "@/components/ProductCard";
 import { Footer } from "@/components/Footer";
 import Image from "next/image";
+import type { Metadata } from 'next'
 
 const products = [
   {
@@ -26,6 +27,11 @@ const products = [
     description: "大切な思い出の写真をレジンアートに閉じ込めて、特別な作品を作りましょう。カップルや友達同士、家族同士で人気のプランです。",
   },
 ];
+
+export const metadata: Metadata = {
+  title: '石垣島でレジンアート体験 | れじこら工房',
+  description: '石垣島で美しい海をイメージしたレジンアート体験！世界に一つだけのオリジナル作品を作れます。カップル、家族、友達同士で楽しめる！',
+}
 
 export default function Home() {
   return (
