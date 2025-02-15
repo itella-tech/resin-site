@@ -1,3 +1,4 @@
+npm install resend @react-email/components
 export type DailyTimeSlot = {
   slot_id: string
   capacity: number
@@ -25,4 +26,8 @@ export type ReservationFormData = {
   phone_number: string
   number_of_people: number
   notes?: string
+  planName: string
+  date: string
+  time: string
+  menu_id: string
 }

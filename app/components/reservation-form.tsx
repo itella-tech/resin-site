@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { DailyTimeSlot, MenuItem, ReservationFormData } from "@/types/reservation"
 import { createClientSupabaseClient } from "@/lib/supabase"
 import { useToast } from "@/hooks/use-toast"
+import { sendConfirmationEmail } from "@/server/actions/email/send-confirmation"
 
 const formSchema = z.object({
   name: z.string().min(1, "お名前を入力してください"),
@@ -84,12 +85,31 @@ export function ReservationForm({ slot, menu, onSuccess, onCancel }: Reservation
         return
       }
 
-      toast({
-        title: "予約が完了しました",
-        description: "ご予約ありがとうございます",
-      })
+      // 予約確認メールを送信
+      const emailData = {
+        ...data,
+        planName: menu.name,
+        date: slot.date,
+        time: `${slot.start_time} - ${slot.end_time}`,
+        menu_id: menu.menu_id
+      }
+      
+      const { success: emailSuccess } = await sendConfirmationEmail(emailData)
+      
+      if (!emailSuccess) {
+        toast({
+          title: "メール送信に失敗しました",
+          description: "予約は完了していますが、確認メールの送信に失敗しました",
+          variant: "destructive",
+        })
+      } else {
+        toast({
+          title: "予約が完了しました",
+          description: "ご予約の確認メールをお送りしました",
+        })
+      }
 
-      onSuccess(data)
+      onSuccess(emailData)
     } catch {
       toast({
         title: "エラーが発生しました",
