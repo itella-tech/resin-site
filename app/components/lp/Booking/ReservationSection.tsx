@@ -181,43 +181,46 @@ export function ReservationSection({
     window.location.href = "/lp#booking"
   }
 
-  const renderTimeSlot = (slot: DailyTimeSlot) => (
-    <Card
-      key={slot.slot_id}
-      className={`cursor-pointer ${!slot.is_sold_out && "hover:bg-accent"}`}
-    >
-      <CardContent
-        className="p-4"
-        onClick={() => !slot.is_sold_out && handleSlotSelect(slot)}
+  const renderTimeSlot = (slot: DailyTimeSlot) => {
+    const isNotAvailable = slot.is_sold_out || slot.available_capacity <= 0;
+    return (
+      <Card
+        key={slot.slot_id}
+        className={`cursor-pointer ${!isNotAvailable && "hover:bg-accent"}`}
       >
-        <div className="flex justify-between items-center">
-          <div>
-            <p className="font-medium">
-              {format(new Date(`2000-01-01T${slot.start_time}`), "H:mm", {
-                locale: ja,
-              })}
-              {" - "}
-              {format(new Date(`2000-01-01T${slot.end_time}`), "H:mm", {
-                locale: ja,
-              })}
-            </p>
-            <p className="text-sm text-muted-foreground">
-              残り{slot.available_capacity}名
-            </p>
+        <CardContent
+          className="p-4"
+          onClick={() => !isNotAvailable && handleSlotSelect(slot)}
+        >
+          <div className="flex justify-between items-center">
+            <div>
+              <p className="font-medium">
+                {format(new Date(`2000-01-01T${slot.start_time}`), "H:mm", {
+                  locale: ja,
+                })}
+                {" - "}
+                {format(new Date(`2000-01-01T${slot.end_time}`), "H:mm", {
+                  locale: ja,
+                })}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                {slot.available_capacity <= 0 ? "満席" : `残り${slot.available_capacity}名`}
+              </p>
+            </div>
+            {isNotAvailable ? (
+              <span className="text-destructive font-medium">
+                {slot.is_sold_out ? "売止" : "満席"}
+              </span>
+            ) : (
+              <span className="text-primary font-medium">
+                予約可能
+              </span>
+            )}
           </div>
-          {slot.is_sold_out ? (
-            <span className="text-destructive font-medium">
-              売止
-            </span>
-          ) : (
-            <span className="text-primary font-medium">
-              予約可能
-            </span>
-          )}
-        </div>
-      </CardContent>
-    </Card>
-  )
+        </CardContent>
+      </Card>
+    );
+  }
 
   const renderMenuItem = (menu: MenuItem) => (
     <Card
@@ -430,8 +433,8 @@ export function ReservationSection({
   return (
     <div className="container py-8">
       <h1 className="text-3xl font-bold mb-8">予約する</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* メニュー選択 */}
+      {!selectedMenu ? (
+        // メニュー選択
         <Card>
           <CardHeader>
             <CardTitle>メニューを選択</CardTitle>
@@ -442,40 +445,66 @@ export function ReservationSection({
             </div>
           </CardContent>
         </Card>
-
-        {/* 日時選択 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>
-              {selectedDate
-                ? format(selectedDate, "M月d日", { locale: ja }) + "の予約枠"
-                : "日付を選択"}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <Calendar
-              mode="single"
-              selected={selectedDate}
-              onSelect={handleDateSelect}
-              locale={ja}
-              disabled={(date) => date < new Date()}
-            />
-            <div className="border-t pt-6">
-              <div className="space-y-2">
-                {isLoading ? (
-                  <p className="text-muted-foreground">読み込み中...</p>
-                ) : dailySlots.length === 0 ? (
-                  <p className="text-muted-foreground">
-                    予約可能な枠がありません
-                  </p>
-                ) : (
-                  dailySlots.map(renderTimeSlot)
-                )}
+      ) : (
+        // 日時選択
+        <div className="space-y-6">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-4">
+              {selectedMenu.image_url && (
+                <div className="w-16 h-16 relative rounded-lg overflow-hidden flex-shrink-0">
+                  <Image
+                    src={selectedMenu.image_url}
+                    alt={selectedMenu.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
+              <div>
+                <h2 className="font-medium">{selectedMenu.name}</h2>
+                <p className="text-sm text-muted-foreground">
+                  ¥{selectedMenu.price.toLocaleString()} / {selectedMenu.duration}分
+                </p>
               </div>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+            <Button variant="outline" onClick={() => onMenuSelect(null)}>
+              メニューを変更
+            </Button>
+          </div>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle>
+                {selectedDate
+                  ? format(selectedDate, "M月d日", { locale: ja }) + "の予約枠"
+                  : "日付を選択"}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <Calendar
+                mode="single"
+                selected={selectedDate}
+                onSelect={handleDateSelect}
+                locale={ja}
+                disabled={(date) => date < new Date()}
+              />
+              <div className="border-t pt-6">
+                <div className="space-y-2">
+                  {isLoading ? (
+                    <p className="text-muted-foreground">読み込み中...</p>
+                  ) : dailySlots.length === 0 ? (
+                    <p className="text-muted-foreground">
+                      予約可能な枠がありません
+                    </p>
+                  ) : (
+                    dailySlots.map(renderTimeSlot)
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   )
 }
