@@ -1,5 +1,6 @@
 import { ProductCard } from "@/components/ProductCard";
 import { Footer } from "@/components/Footer";
+import { Reviews } from "@/components/Reviews";
 import Image from "next/image";
 import type { Metadata } from 'next'
 import Link from 'next/link';
@@ -95,6 +96,9 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        {/* Reviews Section */}
+        <Reviews />
 
         {/* Store Information */}
         <div className="border-t border-gray-100">
