@@ -4,9 +4,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { products } from "@/lib/products";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Footer } from "@/components/Footer";
 import {
+  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -23,6 +24,20 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function ResinArtExperience() {
+  const [api, setApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [api]);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
@@ -73,29 +88,125 @@ export default function ResinArtExperience() {
           </div>
         </section>
 
-        {/* Experience Highlights */}
-        <section id="experience" className="py-16 bg-gray-50">
+        {/* Lead Section */}
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">体験の魅力</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">初心者でも安心</h3>
-                  <p>丁寧な指導で、レジンアートの基礎から学べます。</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">カップル・家族で楽しめる</h3>
-                  <p>大切な人と一緒に、素敵な思い出を作りましょう。</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">お土産にも最適</h3>
-                  <p>自分だけのオリジナル作品を、素敵な思い出として持ち帰れます。</p>
-                </CardContent>
-              </Card>
+            <h2 className="text-3xl font-bold text-center mb-4">
+              雨の日は、室内でまったり手作り沖縄アート体験
+            </h2>
+            <p className="text-lg text-center text-gray-600">
+              外はしとしと雨でも、石垣島の室内であなただけの海を描いてみませんか？
+              <br />
+              雨音をBGMに、ゆったりとした時間の中でオリジナルのレジンアートを作り上げる、心温まるひとときをお約束します。
+            </p>
+          </div>
+        </section>
+
+        {/* Experience Highlights */}
+        <section id="experience" className="py-16 relative">
+          <div className="absolute inset-0 bg-[#91bdd6]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              radial-gradient(circle at 50% 50%, transparent 10%, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.1) 15%, transparent 15%),
+              radial-gradient(circle at 0% 50%, transparent 20%, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.08) 25%, transparent 25%),
+              radial-gradient(circle at 100% 50%, transparent 20%, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.08) 25%, transparent 25%)
+            `,
+            backgroundSize: '100px 100px, 160px 160px, 160px 160px',
+            backgroundPosition: '0 0, 0 0, 0 0'
+          }} />
+          <div className="container mx-auto px-4 relative">
+            <h2 className="text-3xl font-bold text-center mb-12 text-white">体験の魅力</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              <div className="space-y-6">
+                <Carousel 
+                  className="w-full aspect-[4/3]" 
+                  opts={{ loop: true, align: "start" }}
+                  setApi={setApi}
+                >
+                  <CarouselContent>
+                    {[
+                      { src: "/ocean_board.webp", alt: "マングローブの写真1" },
+                      { src: "/ocean_board_1.webp", alt: "マングローブの写真2" },
+                      { src: "/couple_board.webp", alt: "マングローブの写真3" },
+                      { src: "/couple_board2.webp", alt: "マングローブの写真4" },
+                      { src: "/inside.webp", alt: "マングローブの写真5" },
+                      { src: "/outside.webp", alt: "マングローブの写真6" },
+                    ].map((image, index) => (
+                      <CarouselItem key={index}>
+                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            priority={index === 0}
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+                <div className="grid grid-cols-6 gap-2">
+                  {[
+                    "/ocean_board.webp",
+                    "/ocean_board_1.webp",
+                    "/couple_board.webp",
+                    "/couple_board2.webp",
+                    "/inside.webp",
+                    "/outside.webp",
+                  ].map((src, index) => (
+                    <div key={index} className="relative aspect-square w-full overflow-hidden rounded-lg">
+                      <Image
+                        src={src}
+                        alt={`サムネイル ${index + 1}`}
+                        fill
+                        className="object-cover hover:opacity-80 transition-opacity cursor-pointer"
+                        sizes="(max-width: 768px) 16vw, 8vw"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-white rounded-xl p-8 space-y-8">
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="bg-pink-500 text-white px-4 py-1 rounded-full text-sm font-bold">POINT.1</span>
+                    <h3 className="text-2xl font-bold text-yellow-400">当日予約OK！</h3>
+                  </div>
+                  <p className="text-gray-700">
+                    集合時間に間に合えばギリギリのご予約も大丈夫！是非一度お問合せください。
+                  </p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="bg-pink-500 text-white px-4 py-1 rounded-full text-sm font-bold">POINT.2</span>
+                    <h3 className="text-2xl font-bold text-yellow-400">雨の日でもOK</h3>
+                  </div>
+                  <p className="text-gray-700">
+                    室内アクティビティだから、雨でも大丈夫！急な雨でご旅行の予定が変更になっても楽しめる数少ないアクティビティです！
+                  </p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="bg-pink-500 text-white px-4 py-1 rounded-full text-sm font-bold">POINT.3</span>
+                    <h3 className="text-2xl font-bold text-yellow-400">5歳のお子様から参加できる！</h3>
+                  </div>
+                  <p className="text-gray-700">
+                    絵の具で海を描くパートはお子様でも大丈夫！ご友人同士、ご家族、三世代旅行、グループ、お一人様のご参加も大歓迎！
+                  </p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="bg-pink-500 text-white px-4 py-1 rounded-full text-sm font-bold">POINT.4</span>
+                    <h3 className="text-2xl font-bold text-yellow-400">石垣旅行を全力でサポート</h3>
+                  </div>
+                  <p className="text-gray-700">
+                    ご予約の際も専任の予約担当者が当店のメニューだけではなく、親身になってお客様の石垣旅行を全力でサポートいたします！
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
