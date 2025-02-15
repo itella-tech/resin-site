@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { TourSchedule } from "@/components/TourSchedule";
 import { Card, CardContent } from "@/components/ui/card";
 import { products } from "@/lib/products";
 import { useState, useEffect } from "react";
@@ -332,6 +333,8 @@ export default function ResinArtExperience() {
             </Carousel>
           </div>
         </section>
+
+        <TourSchedule />
 
         {/* Experience Details */}
         <section className="py-16 bg-white">
