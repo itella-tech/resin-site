@@ -46,6 +46,7 @@ export function ReservationSection({
         .from("menu_items")
         .select("*")
         .order("price")
+        .returns<MenuItem[]>()
 
       if (error) {
         toast({
@@ -56,7 +57,7 @@ export function ReservationSection({
         return
       }
 
-      setMenuItems(data)
+      setMenuItems(data || [])
     }
 
     fetchMenuItems()
@@ -72,6 +73,7 @@ export function ReservationSection({
         .from("time_slots")
         .select("*")
         .order("start_time")
+        .returns<{ slot_id: string; capacity: number; start_time: string; end_time: string }[]>()
 
       if (timeSlotsError) throw new Error("予約枠の取得に失敗しました")
 
@@ -80,6 +82,7 @@ export function ReservationSection({
         .from("sold_out_settings")
         .select("slot_id")
         .eq("date", format(date, "yyyy-MM-dd"))
+        .returns<{ slot_id: string }[]>()
 
       if (soldOutError) throw new Error("売止設定の取得に失敗しました")
 
@@ -88,20 +91,21 @@ export function ReservationSection({
         .from("reservations")
         .select("slot_id, number_of_people")
         .eq("reservation_date", format(date, "yyyy-MM-dd"))
+        .returns<{ slot_id: string; number_of_people: number }[]>()
 
       if (reservationsError) throw new Error("予約情報の取得に失敗しました")
 
       // 予約枠ごとの予約人数を集計
-      const reservationCounts = reservations?.reduce((acc: Record<string, number>, curr: { slot_id: string; number_of_people: number }) => {
+      const reservationCounts = (reservations || []).reduce((acc: Record<string, number>, curr) => {
         acc[curr.slot_id] = (acc[curr.slot_id] || 0) + curr.number_of_people
         return acc
       }, {} as Record<string, number>) || {}
 
       // 売止設定のslot_idセットを作成
-      const soldOutSlotIds = new Set(soldOutSettings?.map((s: { slot_id: string }) => s.slot_id) || [])
+      const soldOutSlotIds = new Set((soldOutSettings || []).map(s => s.slot_id))
 
       // 日付と時間枠を組み合わせた情報を作成
-      const dailyTimeSlots = timeSlots?.map((slot: { slot_id: string; capacity: number; start_time: string; end_time: string }) => ({
+      const dailyTimeSlots = (timeSlots || []).map(slot => ({
         ...slot,
         date: format(date, "yyyy-MM-dd"),
         is_sold_out: soldOutSlotIds.has(slot.slot_id),

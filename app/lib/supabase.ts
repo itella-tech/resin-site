@@ -7,6 +7,12 @@ if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error('Missing Supabase environment variables')
 }
 
+// シングルトンインスタンスを保持する変数
+let supabaseInstance: ReturnType<typeof createClient> | null = null
+
 export const createClientSupabaseClient = () => {
-  return createClient(supabaseUrl, supabaseAnonKey)
+  if (!supabaseInstance) {
+    supabaseInstance = createClient(supabaseUrl, supabaseAnonKey)
+  }
+  return supabaseInstance
 }
