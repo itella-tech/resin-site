@@ -57,7 +57,7 @@ export default function ResinArtExperience() {
         <section
           className="relative h-[80vh] bg-cover bg-center"
           style={{
-            backgroundImage: "url('/placeholder.svg?height=800&width=1200')",
+            backgroundImage: "url('/lp-hero.webp')",
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
