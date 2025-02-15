@@ -85,21 +85,28 @@ function BookingContent() {
           throw new Error("売止情報の取得に失敗しました")
         }
 
-        const totalReserved = reservations?.reduce((sum, r) => sum + r.number_of_people, 0) || 0
-        const availableCapacity = slotData.capacity - totalReserved
+        const typedReservations = (reservations || []) as { number_of_people: number }[]
+        const typedSlotData = slotData as { slot_id: string; capacity: number; start_time: string; end_time: string }
+        const totalReserved = typedReservations.reduce((sum, r) => sum + r.number_of_people, 0)
+        const availableCapacity = typedSlotData.capacity - totalReserved
         const isSoldOut = soldOut !== null
 
         if (isSoldOut || availableCapacity <= 0) {
           throw new Error("この予約枠は既に予約できません")
         }
 
-        setMenu(menuData)
-        setSlot({
-          ...slotData,
-          date,
-          available_capacity: availableCapacity,
-          is_sold_out: isSoldOut,
-        })
+        setMenu(menuData as MenuItem)
+        if (slotData) {
+          setSlot({
+            slot_id: typedSlotData.slot_id,
+            capacity: typedSlotData.capacity,
+            start_time: typedSlotData.start_time,
+            end_time: typedSlotData.end_time,
+            date,
+            available_capacity: availableCapacity,
+            is_sold_out: isSoldOut,
+          })
+        }
       } catch (error) {
         const message = error instanceof Error ? error.message : "予約情報の取得に失敗しました"
         toast({
