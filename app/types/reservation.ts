@@ -1,4 +1,3 @@
-npm install resend @react-email/components
 export type DailyTimeSlot = {
   slot_id: string
   capacity: number
