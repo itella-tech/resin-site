@@ -1,6 +1,13 @@
 import Image from "next/image";
 
 export function ExperiencePlans() {
+  const scrollToBooking = () => {
+    const bookingSection = document.getElementById('booking');
+    if (bookingSection) {
+      bookingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="py-16 bg-gradient-to-b from-white to-blue-50">
       <div className="container mx-auto px-4">
@@ -11,7 +18,10 @@ export function ExperiencePlans() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* シンプルレジンアート */}
-          <div className="bg-white rounded-xl p-8 shadow-lg">
+          <div 
+            className="bg-white rounded-xl p-8 shadow-lg cursor-pointer transition-transform hover:scale-105"
+            onClick={scrollToBooking}
+          >
             <h3 className="text-2xl font-bold mb-6 text-ocean-dark flex items-center justify-between">
               <span>シンプルレジンアート</span>
               <span className="text-lg font-normal text-gray-600">¥6,000</span>
@@ -54,7 +64,10 @@ export function ExperiencePlans() {
           </div>
           
           {/* フォトレジンアート */}
-          <div className="bg-white rounded-xl p-8 shadow-lg">
+          <div 
+            className="bg-white rounded-xl p-8 shadow-lg cursor-pointer transition-transform hover:scale-105"
+            onClick={scrollToBooking}
+          >
             <h3 className="text-2xl font-bold mb-6 text-ocean-dark flex items-center justify-between">
               <span>フォトレジンアート</span>
               <span className="text-lg font-normal text-gray-600">¥10,000</span>
