@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function Hero() {
   return (
@@ -22,18 +23,15 @@ export function Hero() {
             <br />
             室内でゆったりと楽しめる「レジンアート体験」があります。
           </p>
-          <div className="space-x-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              今すぐ予約
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-white text-primary hover:bg-gray-100"
-            >
-              詳細を見る
-            </Button>
-          </div>
+        </div>
+        <div className="absolute bottom-8 left-8 w-32 h-32">
+          <Image
+            src="/sameDayBookingOK.webp"
+            alt="当日予約OK"
+            width={128}
+            height={128}
+            className="object-contain"
+          />
         </div>
       </section>
 
@@ -56,18 +54,15 @@ export function Hero() {
             <br />
             室内でゆったりと楽しめる「レジンアート体験」があります。
           </p>
-          <div className="space-x-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              今すぐ予約
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-white text-primary hover:bg-gray-100"
-            >
-              詳細を見る
-            </Button>
-          </div>
+        </div>
+        <div className="absolute bottom-8 left-8 w-32 h-32">
+          <Image
+            src="/sameDayBookingOK.webp"
+            alt="当日予約OK"
+            width={128}
+            height={128}
+            className="object-contain"
+          />
         </div>
       </section>
     </>

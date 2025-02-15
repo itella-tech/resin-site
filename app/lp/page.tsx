@@ -19,7 +19,6 @@ export default function ResinArtExperience() {
         <ExperienceHighlights />
         <TourSchedule />
         <FAQ />
-        <Booking />
         <Reviews />
         <StoreInfo />
       </main>
