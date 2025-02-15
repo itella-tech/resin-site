@@ -6,31 +6,31 @@ const scheduleSteps = [
     step: "STEP.1",
     title: "受付、準備",
     description: "店舗にて受付を済ませ、エプロンの着用など制作の準備をします。（10：00、13：00、15：00に開始）",
-    image: "/placeholder.svg?height=300&width=400&text=STEP1",
+    image: "/tour-schedule/step1.webp",
   },
   {
     step: "STEP.2",
     title: "デザイン決め",
     description: "作りたい作品のデザインを決めます。フォトレジンアートの場合は、使用する写真も選びます（スマホから印刷可能です）。スタッフが丁寧にアドバイスいたします。",
-    image: "/placeholder.svg?height=300&width=400&text=STEP2",
+    image: "/tour-schedule/step2.webp",
   },
   {
     step: "STEP.3",
     title: "砂浜づくり",
     description: "本物の砂を使って、リアルな砂浜の質感を作り上げていきます。",
-    image: "/placeholder.svg?height=300&width=400&text=STEP3",
+    image: "/tour-schedule/step3.webp",
   },
   {
     step: "STEP.4",
     title: "下絵塗り",
     description: "絵の具で海や空を描き、オリジナルの風景を作り上げていきます。",
-    image: "/placeholder.svg?height=300&width=400&text=STEP4",
+    image: "/tour-schedule/step4.webp",
   },
   {
     step: "STEP.5",
     title: "レジンコーティング",
     description: "最後にレジンを流し込んで、透明感のある美しい仕上がりに。乾燥時間が必要なため、作品は後日のお渡しとなります。",
-    image: "/placeholder.svg?height=300&width=400&text=STEP5",
+    image: "/tour-schedule/step5.webp",
   },
 ]
 
