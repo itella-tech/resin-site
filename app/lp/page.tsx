@@ -12,8 +12,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import {
   Accordion,
@@ -310,89 +308,51 @@ export default function ResinArtExperience() {
           </div>
         </section>
 
-        {/* Gallery */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">作品ギャラリー</h2>
-            <Carousel className="w-full max-w-xs mx-auto">
-              <CarouselContent>
-                {[1, 2, 3, 4, 5].map((index) => (
-                  <CarouselItem key={index}>
-                    <Image
-                      src={`/placeholder.svg?height=300&width=300&text=作品${index}`}
-                      alt={`作品${index}`}
-                      width={300}
-                      height={300}
-                      className="rounded-lg"
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="absolute top-1/2 left-4 -translate-y-1/2 bg-white rounded-full p-2 z-10" />
-              <CarouselNext className="absolute top-1/2 right-4 -translate-y-1/2 bg-white rounded-full p-2 z-10" />
-            </Carousel>
-          </div>
-        </section>
-
         <TourSchedule />
 
-        {/* Experience Details */}
+        {/* FAQ Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">体験の流れ</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-4">体験プロセス</h3>
-                <ol className="list-decimal list-inside space-y-2">
-                  <li>受付、準備</li>
-                  <li>デザイン決め</li>
-                  <li>写真決め（フォトレジンアートの場合）</li>
-                  <li>砂浜づくり</li>
-                  <li>下絵塗り</li>
-                  <li>レジンコーティング</li>
-                </ol>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-4">よくある質問</h3>
-                <Accordion type="single" collapsible>
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>シンプルレジンアートとフォトレジンアートの違いは？</AccordionTrigger>
-                    <AccordionContent>
-                      シンプルレジンアートは、砂浜や波、空などを自由に描いて創作する作品です。一方、フォトレジンアートは、お気に入りの写真をレジンアートと組み合わせて、特別なフォトフレームを作成します。どちらも思い出に残る素敵な作品を作ることができます。
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>所要時間はどのくらいですか？</AccordionTrigger>
-                    <AccordionContent>
-                      シンプルレジンアートは約1時間から1時間半程度です。フォトレジンアートは写真の選定や配置の時間が必要なため、約2時間程度かかります。デザインの複雑さによって多少前後する場合があります。
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger>予約は必要ですか？</AccordionTrigger>
-                    <AccordionContent>
-                      はい、スムーズな体験のために事前予約をお願いしています。当日の空き状況によっては当日予約も可能な場合がありますが、確実に体験されたい方は事前のご予約をおすすめします。特にフォトレジンアートは準備に時間がかかるため、前日までのご予約をお願いしています。
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-4">
-                    <AccordionTrigger>子供でも参加できますか？</AccordionTrigger>
-                    <AccordionContent>
-                      はい、5歳以上のお子様から参加いただけます。シンプルレジンアートは特に、お子様でも楽しく取り組めるよう、スタッフが丁寧にサポートいたします。
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-5">
-                    <AccordionTrigger>作品は当日持ち帰れますか？</AccordionTrigger>
-                    <AccordionContent>
-                      レジンの乾燥時間が必要なため、作品は翌日以降のお渡しとなります。ご宿泊先へのお届けや、ご自宅への配送も承っております（送料別途）。
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-6">
-                    <AccordionTrigger>フォトレジンアートの写真はどうすればいいですか？</AccordionTrigger>
-                    <AccordionContent>
-                      スマートフォンの写真でもOKです。その場で撮影した写真も使用できます。また、事前にデータをお送りいただければ、こちらで印刷の準備をさせていただきます。
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </div>
+            <h2 className="text-3xl font-bold text-center mb-12">よくある質問</h2>
+            <div className="max-w-3xl mx-auto">
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>シンプルレジンアートとフォトレジンアートの違いは？</AccordionTrigger>
+                  <AccordionContent>
+                    シンプルレジンアートは、砂浜や波、空などを自由に描いて創作する作品です。一方、フォトレジンアートは、お気に入りの写真をレジンアートと組み合わせて、特別なフォトフレームを作成します。どちらも思い出に残る素敵な作品を作ることができます。
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-2">
+                  <AccordionTrigger>所要時間はどのくらいですか？</AccordionTrigger>
+                  <AccordionContent>
+                    シンプルレジンアートは約1時間から1時間半程度です。フォトレジンアートは写真の選定や配置の時間が必要なため、約2時間程度かかります。デザインの複雑さによって多少前後する場合があります。
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-3">
+                  <AccordionTrigger>予約は必要ですか？</AccordionTrigger>
+                  <AccordionContent>
+                    はい、スムーズな体験のために事前予約をお願いしています。当日の空き状況によっては当日予約も可能な場合がありますが、確実に体験されたい方は事前のご予約をおすすめします。特にフォトレジンアートは準備に時間がかかるため、前日までのご予約をお願いしています。
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-4">
+                  <AccordionTrigger>子供でも参加できますか？</AccordionTrigger>
+                  <AccordionContent>
+                    はい、5歳以上のお子様から参加いただけます。シンプルレジンアートは特に、お子様でも楽しく取り組めるよう、スタッフが丁寧にサポートいたします。
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-5">
+                  <AccordionTrigger>作品は当日持ち帰れますか？</AccordionTrigger>
+                  <AccordionContent>
+                    レジンの乾燥時間が必要なため、作品は翌日以降のお渡しとなります。ご宿泊先へのお届けや、ご自宅への配送も承っております（送料別途）。
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-6">
+                  <AccordionTrigger>フォトレジンアートの写真はどうすればいいですか？</AccordionTrigger>
+                  <AccordionContent>
+                    スマートフォンの写真でもOKです。その場で撮影した写真も使用できます。また、事前にデータをお送りいただければ、こちらで印刷の準備をさせていただきます。
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
         </section>
