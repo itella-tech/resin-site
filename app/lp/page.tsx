@@ -12,9 +12,7 @@ import { FAQ } from "@/components/lp/FAQ"
 import { Reviews } from "@/components/Reviews"
 import { StoreInfo } from "@/components/lp/StoreInfo"
 import { Footer } from "@/components/Footer"
-import { DailyTimeSlot, MenuItem } from "@/types/reservation"
-
-type ReservationStep = "select" | "form"
+import { DailyTimeSlot, MenuItem, ReservationStep } from "@/types/reservation"
 
 export default function ResinArtExperience() {
   const [isBookingFormVisible, setIsBookingFormVisible] = useState(false)

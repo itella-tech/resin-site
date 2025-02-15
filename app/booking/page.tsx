@@ -1,7 +1,7 @@
 "use client"
 
 import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { format } from "date-fns"
 import { ja } from "date-fns/locale"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,7 +12,19 @@ import { useToast } from "@/hooks/use-toast"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 
-export default function BookingPage() {
+function LoadingState() {
+  return (
+    <div className="container py-8">
+      <div className="animate-pulse space-y-4">
+        <div className="h-8 w-48 bg-gray-200 rounded"></div>
+        <div className="h-64 bg-gray-200 rounded"></div>
+        <div className="h-96 bg-gray-200 rounded"></div>
+      </div>
+    </div>
+  )
+}
+
+function BookingContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const { toast } = useToast()
@@ -109,11 +121,7 @@ export default function BookingPage() {
   }
 
   if (isLoading) {
-    return (
-      <div className="container py-8">
-        <p className="text-muted-foreground">読み込み中...</p>
-      </div>
-    )
+    return <LoadingState />
   }
 
   if (!menu || !slot) {
@@ -190,5 +198,13 @@ export default function BookingPage() {
         </CardContent>
       </Card>
     </div>
+  )
+}
+
+export default function BookingPage() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <BookingContent />
+    </Suspense>
   )
 }

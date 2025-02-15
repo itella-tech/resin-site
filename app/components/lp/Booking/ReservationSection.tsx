@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, Dispatch, SetStateAction } from "react"
+import { useState, useEffect, useCallback, Dispatch, SetStateAction } from "react"
 import { format } from "date-fns"
 import { ja } from "date-fns/locale"
 import { Calendar } from "@/components/ui/calendar"
@@ -60,10 +60,10 @@ export function ReservationSection({
     }
 
     fetchMenuItems()
-  }, [toast])
+  }, [toast, supabase])
 
   // 選択された日付の予約枠を取得
-  const fetchDailySlots = async (date: Date) => {
+  const fetchDailySlots = useCallback(async (date: Date) => {
     try {
       setIsLoading(true)
       
@@ -119,14 +119,14 @@ export function ReservationSection({
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [supabase, toast])
 
   // 初期データの読み込み
   useEffect(() => {
     if (selectedDate) {
       fetchDailySlots(selectedDate)
     }
-  }, [selectedDate])
+  }, [selectedDate, fetchDailySlots])
 
   // 日付が選択された時の処理
   const handleDateSelect = (date: Date | undefined) => {
