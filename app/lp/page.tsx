@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { products } from "@/lib/products";
 import { useState, useEffect } from "react";
 import { Footer } from "@/components/Footer";
@@ -211,21 +211,101 @@ export default function ResinArtExperience() {
           </div>
         </section>
 
-        {/* プラン一覧セクション */}
-        <section className="container mx-auto px-4 py-8">
-          <h2 className="text-3xl font-bold mb-8 text-center">体験プラン</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                title={product.title}
-                price={product.price}
-                images={[...product.images]}
-                category={product.category}
-                description={product.description.split("\n")[0]}
-              />
-            ))}
+        {/* 体験プランセクション */}
+        <section className="py-16 bg-gradient-to-b from-white to-blue-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-4">体験プラン</h2>
+            <p className="text-center text-gray-600 mb-12">
+              お好みやご予算に合わせて、最適なプランをお選びいただけます。<br/>
+              初めての方でも安心して楽しめる、丁寧なサポート付きです。
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {/* シンプルレジンアート */}
+              <div className="bg-white rounded-xl p-8 shadow-lg">
+                <h3 className="text-2xl font-bold mb-6 text-ocean-dark flex items-center justify-between">
+                  <span>シンプルレジンアート</span>
+                  <span className="text-lg font-normal text-gray-600">¥6,000</span>
+                </h3>
+                <div className="space-y-4">
+                  <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
+                    <Image
+                      src="/ocean_board.webp"
+                      alt="シンプルレジンアートの例"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="space-y-6">
+                    <div className="bg-ocean-light/10 p-6 rounded-xl">
+                      <h4 className="text-lg font-bold text-ocean-dark mb-3">特徴</h4>
+                      <p className="text-gray-700 leading-relaxed">
+                        砂浜や波、空などを自由に表現できる、オリジナリティあふれる作品作りが可能です。
+                      </p>
+                    </div>
+                    <div className="bg-ocean-light/10 p-6 rounded-xl">
+                      <h4 className="text-lg font-bold text-ocean-dark mb-3">こんな方におすすめ</h4>
+                      <ul className="text-gray-700 space-y-2">
+                        <li className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-ocean-dark rounded-full mr-2"></span>
+                          絵を描くことが好きな方
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-ocean-dark rounded-full mr-2"></span>
+                          自分だけの海を創造したい方
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-ocean-dark rounded-full mr-2"></span>
+                          お子様との思い出作りに
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* フォトレジンアート */}
+              <div className="bg-white rounded-xl p-8 shadow-lg">
+                <h3 className="text-2xl font-bold mb-6 text-ocean-dark flex items-center justify-between">
+                  <span>フォトレジンアート</span>
+                  <span className="text-lg font-normal text-gray-600">¥10,000</span>
+                </h3>
+                <div className="space-y-4">
+                  <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
+                    <Image
+                      src="/photo_board_1.webp"
+                      alt="フォトレジンアートの例"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="space-y-6">
+                    <div className="bg-ocean-light/10 p-6 rounded-xl">
+                      <h4 className="text-lg font-bold text-ocean-dark mb-3">特徴</h4>
+                      <p className="text-gray-700 leading-relaxed">
+                        思い出の写真と美しい海のアートを組み合わせた、世界に一つだけのフォトフレームを作れます。
+                      </p>
+                    </div>
+                    <div className="bg-ocean-light/10 p-6 rounded-xl">
+                      <h4 className="text-lg font-bold text-ocean-dark mb-3">こんな方におすすめ</h4>
+                      <ul className="text-gray-700 space-y-2">
+                        <li className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-ocean-dark rounded-full mr-2"></span>
+                          カップルや家族での思い出作りに
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-ocean-dark rounded-full mr-2"></span>
+                          記念日のギフトとして
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-ocean-dark rounded-full mr-2"></span>
+                          旅の思い出を特別な形に残したい方
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -273,21 +353,39 @@ export default function ResinArtExperience() {
                 <h3 className="text-xl font-semibold mb-4">よくある質問</h3>
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
-                    <AccordionTrigger>所要時間はどのくらいですか？</AccordionTrigger>
+                    <AccordionTrigger>シンプルレジンアートとフォトレジンアートの違いは？</AccordionTrigger>
                     <AccordionContent>
-                      通常、体験時間は約1時間から1時間半程度です。デザインの複雑さによって多少前後する場合があります。
+                      シンプルレジンアートは、砂浜や波、空などを自由に描いて創作する作品です。一方、フォトレジンアートは、お気に入りの写真をレジンアートと組み合わせて、特別なフォトフレームを作成します。どちらも思い出に残る素敵な作品を作ることができます。
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-2">
-                    <AccordionTrigger>予約は必要ですか？</AccordionTrigger>
+                    <AccordionTrigger>所要時間はどのくらいですか？</AccordionTrigger>
                     <AccordionContent>
-                      はい、スムーズな体験のために事前予約をお願いしています。当日の空き状況によっては当日予約も可能な場合がありますが、確実に体験されたい方は事前のご予約をおすすめします。
+                      シンプルレジンアートは約1時間から1時間半程度です。フォトレジンアートは写真の選定や配置の時間が必要なため、約2時間程度かかります。デザインの複雑さによって多少前後する場合があります。
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-3">
+                    <AccordionTrigger>予約は必要ですか？</AccordionTrigger>
+                    <AccordionContent>
+                      はい、スムーズな体験のために事前予約をお願いしています。当日の空き状況によっては当日予約も可能な場合がありますが、確実に体験されたい方は事前のご予約をおすすめします。特にフォトレジンアートは準備に時間がかかるため、前日までのご予約をお願いしています。
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-4">
                     <AccordionTrigger>子供でも参加できますか？</AccordionTrigger>
                     <AccordionContent>
-                      はい、お子様も参加いただけます。
+                      はい、5歳以上のお子様から参加いただけます。シンプルレジンアートは特に、お子様でも楽しく取り組めるよう、スタッフが丁寧にサポートいたします。
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-5">
+                    <AccordionTrigger>作品は当日持ち帰れますか？</AccordionTrigger>
+                    <AccordionContent>
+                      レジンの乾燥時間が必要なため、作品は翌日以降のお渡しとなります。ご宿泊先へのお届けや、ご自宅への配送も承っております（送料別途）。
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-6">
+                    <AccordionTrigger>フォトレジンアートの写真はどうすればいいですか？</AccordionTrigger>
+                    <AccordionContent>
+                      スマートフォンの写真でもOKです。その場で撮影した写真も使用できます。また、事前にデータをお送りいただければ、こちらで印刷の準備をさせていただきます。
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
@@ -423,69 +521,3 @@ export default function ResinArtExperience() {
     </div>
   );
 }
-
-interface ProductCardProps {
-  id: number;
-  title: string;
-  price: number;
-  images: string[];
-  category: string;
-  description: string;
-}
-
-const ProductCard = ({
-  id,
-  title,
-  price,
-  images,
-  category,
-  description,
-}: ProductCardProps) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  return (
-    <Link href={`/plans/${id}`} className="block">
-      <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300 h-full">
-        <div className="flex flex-col md:flex-row h-full">
-          <CardContent className="p-0 relative md:w-1/3">
-            <div className="aspect-square overflow-hidden relative">
-              {!imageLoaded && (
-                <div className="absolute inset-0 bg-gray-100 animate-pulse"></div>
-              )}
-              <Image
-                src={images[0]}
-                alt={title}
-                fill
-                priority
-                sizes={`(max-width: 768px) 100vw, 33vw`}
-                onLoad={() => setImageLoaded(true)}
-                className={`object-cover group-hover:scale-105 transition-transform duration-300 ${
-                  imageLoaded ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            </div>
-          </CardContent>
-          <CardFooter className="flex-1 flex flex-col items-start gap-4 p-6">
-            <div className="flex flex-wrap gap-2">
-              {category.split(",").map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-ocean-light/20 text-ocean-dark px-3 py-1 rounded-full text-sm"
-                >
-                  {tag.trim()}
-                </span>
-              ))}
-            </div>
-            <h3 className="font-semibold text-xl">{title}</h3>
-            <p className="text-gray-600">{description}</p>
-            <div className="flex justify-end items-center w-full mt-auto">
-              <span className="text-2xl font-bold text-ocean-dark">
-                ¥{price.toLocaleString()}
-              </span>
-            </div>
-          </CardFooter>
-        </div>
-      </Card>
-    </Link>
-  );
-};
