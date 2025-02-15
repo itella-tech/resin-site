@@ -10,6 +10,7 @@ import {
   Text,
 } from "@react-email/components";
 import { ReservationFormData } from "@/types/reservation";
+import { storeInfo } from "@/components/lp/StoreInfo/data";
 
 interface ReservationConfirmationEmailProps {
   reservation: ReservationFormData;
@@ -57,6 +58,30 @@ export function ReservationConfirmationEmail({
           </Section>
 
           <Hr style={hr} />
+
+          <Section style={section}>
+            <Heading as="h2" style={h2}>アクセス</Heading>
+            <Text style={text}>
+              {storeInfo.address.postal}
+            </Text>
+            <Text style={text}>
+              {storeInfo.address.full}
+            </Text>
+            <Text style={text}>
+              {storeInfo.address.access}
+            </Text>
+            <Text style={text}>
+              電話番号: {storeInfo.tel}
+            </Text>
+            <Text style={text}>
+              営業時間: {storeInfo.hours}
+            </Text>
+            <Text style={text}>
+              <a href="https://maps.app.goo.gl/2uHLmFTtqWfTVQcg9" style={link}>
+                Googleマップで見る
+              </a>
+            </Text>
+          </Section>
 
           <Text style={footer}>
             ※このメールは自動送信されています。
@@ -120,6 +145,11 @@ const footer = {
   lineHeight: "24px",
   margin: "48px 0 20px",
   textAlign: "center" as const,
+};
+
+const link = {
+  color: "#007bff",
+  textDecoration: "underline",
 };
 
 export default ReservationConfirmationEmail;
