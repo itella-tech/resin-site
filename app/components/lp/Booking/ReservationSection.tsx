@@ -192,9 +192,9 @@ export function ReservationSection({
           className="p-4"
           onClick={() => !isNotAvailable && handleSlotSelect(slot)}
         >
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="font-medium">
+          <div className="flex flex-col md:flex-row justify-between gap-2">
+            <div className="flex flex-col">
+              <p className="text-lg font-medium">
                 {format(new Date(`2000-01-01T${slot.start_time}`), "H:mm", {
                   locale: ja,
                 })}
@@ -203,16 +203,16 @@ export function ReservationSection({
                   locale: ja,
                 })}
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground mt-1">
                 {slot.available_capacity <= 0 ? "満席" : `残り${slot.available_capacity}名`}
               </p>
             </div>
             {isNotAvailable ? (
-              <span className="text-destructive font-medium">
+              <span className="text-destructive font-medium px-3 py-1 bg-destructive/10 rounded-full text-center">
                 {slot.is_sold_out ? "売止" : "満席"}
               </span>
             ) : (
-              <span className="text-primary font-medium">
+              <span className="text-primary font-medium px-3 py-1 bg-primary/10 rounded-full text-center">
                 予約可能
               </span>
             )}
@@ -232,10 +232,10 @@ export function ReservationSection({
       }`}
       onClick={() => handleMenuSelect(menu)}
     >
-      <CardContent className="p-4">
-        <div className="flex items-center space-x-4">
+      <CardContent className="p-6">
+        <div className="flex flex-col md:flex-row md:items-start gap-6">
           {menu.image_url && (
-            <div className="w-16 h-16 relative rounded-lg overflow-hidden flex-shrink-0">
+            <div className="w-full md:w-32 h-32 md:h-32 relative rounded-lg overflow-hidden flex-shrink-0">
               <Image
                 src={menu.image_url}
                 alt={menu.name}
@@ -244,16 +244,18 @@ export function ReservationSection({
               />
             </div>
           )}
-          <div className="flex-grow">
-            <h3 className="font-medium">{menu.name}</h3>
-            <p className="text-sm text-muted-foreground line-clamp-2">
-              {menu.description}
-            </p>
-            <div className="flex justify-between items-center mt-2">
-              <span className="text-sm text-muted-foreground">
+          <div className="flex-grow space-y-3">
+            <div>
+              <h3 className="text-xl font-medium mb-2">{menu.name}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {menu.description}
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <span className="text-sm bg-primary/5 px-3 py-1 rounded-full">
                 {menu.duration}分
               </span>
-              <span className="font-bold">
+              <span className="text-lg font-bold">
                 ¥{menu.price.toLocaleString()}
               </span>
             </div>
@@ -265,10 +267,10 @@ export function ReservationSection({
 
   if (currentStep === "complete" && selectedSlot && selectedMenu && reservationData) {
     return (
-      <div className="container max-w-2xl py-8">
-        <div className="flex items-center justify-between mb-8">
+      <div className="container max-w-2xl px-4 py-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <h1 className="text-3xl font-bold">予約確定</h1>
-          <Button variant="outline" onClick={handleCompleteBack}>
+          <Button variant="outline" onClick={handleCompleteBack} className="w-full md:w-auto">
             トップに戻る
           </Button>
         </div>
@@ -278,10 +280,10 @@ export function ReservationSection({
             <CardTitle>予約が確定しました</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
+            <div className="space-y-8">
+              <div className="flex flex-col md:flex-row items-start gap-6">
                 {selectedMenu.image_url && (
-                  <div className="w-24 h-24 relative rounded-lg overflow-hidden flex-shrink-0">
+                  <div className="w-full md:w-32 h-32 relative rounded-lg overflow-hidden flex-shrink-0">
                     <Image
                       src={selectedMenu.image_url}
                       alt={selectedMenu.name}
@@ -290,23 +292,23 @@ export function ReservationSection({
                     />
                   </div>
                 )}
-                <div>
-                  <h2 className="text-xl font-bold mb-2">{selectedMenu.name}</h2>
-                  <p className="text-muted-foreground mb-2">{selectedMenu.description}</p>
-                  <div className="flex items-center space-x-4">
-                    <p className="text-sm">
-                      <span className="font-medium">所要時間:</span> {selectedMenu.duration}分
-                    </p>
-                    <p className="text-lg font-bold">
+                <div className="flex-grow">
+                  <h2 className="text-xl font-bold mb-3">{selectedMenu.name}</h2>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{selectedMenu.description}</p>
+                  <div className="flex flex-wrap gap-4">
+                    <span className="text-sm bg-primary/5 px-3 py-1 rounded-full">
+                      所要時間: {selectedMenu.duration}分
+                    </span>
+                    <span className="text-lg font-bold">
                       ¥{selectedMenu.price.toLocaleString()}
-                    </p>
+                    </span>
                   </div>
                 </div>
               </div>
 
-              <div className="border-t pt-4">
-                <h3 className="font-medium mb-2">予約日時</h3>
-                <p className="text-lg">
+              <div className="border-t pt-6">
+                <h3 className="font-medium mb-3">予約日時</h3>
+                <p className="text-lg mb-2">
                   {format(new Date(selectedSlot.date), "M月d日", { locale: ja })}
                   {" "}
                   {format(new Date(`2000-01-01T${selectedSlot.start_time}`), "H:mm", {
@@ -317,31 +319,33 @@ export function ReservationSection({
                     locale: ja,
                   })}
                 </p>
-                <p className="text-sm text-muted-foreground mt-1">
+                <p className="text-sm text-muted-foreground">
                   予約人数: {reservationData.number_of_people}名
                 </p>
               </div>
 
-              <div className="border-t pt-4">
-                <h3 className="font-medium mb-2">お客様情報</h3>
-                <p className="text-lg">{reservationData.name} 様</p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  電話番号: {reservationData.phone_number}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  メールアドレス: {reservationData.email}
-                </p>
+              <div className="border-t pt-6">
+                <h3 className="font-medium mb-3">お客様情報</h3>
+                <p className="text-lg mb-3">{reservationData.name} 様</p>
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    電話番号: {reservationData.phone_number}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    メールアドレス: {reservationData.email}
+                  </p>
+                </div>
                 {reservationData.notes && (
-                  <div className="mt-2">
-                    <p className="text-sm font-medium">備考</p>
-                    <p className="text-sm text-muted-foreground whitespace-pre-wrap">
+                  <div className="mt-4">
+                    <p className="text-sm font-medium mb-2">備考</p>
+                    <p className="text-sm text-muted-foreground whitespace-pre-wrap bg-muted/50 p-4 rounded-lg">
                       {reservationData.notes}
                     </p>
                   </div>
                 )}
               </div>
 
-              <div className="bg-primary/5 p-4 rounded-lg">
+              <div className="bg-primary/5 p-6 rounded-lg">
                 <p className="text-center text-sm text-muted-foreground">
                   ご予約ありがとうございます。当日のご来店を心よりお待ちしております。
                 </p>
@@ -353,10 +357,10 @@ export function ReservationSection({
     )
   } else if (currentStep === "form" && selectedSlot && selectedMenu) {
     return (
-      <div className="container max-w-2xl py-8">
-        <div className="flex items-center justify-between mb-8">
+      <div className="container max-w-2xl px-4 py-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <h1 className="text-3xl font-bold">予約フォーム</h1>
-          <Button variant="outline" onClick={handleBack}>
+          <Button variant="outline" onClick={handleBack} className="w-full md:w-auto">
             選択画面に戻る
           </Button>
         </div>
@@ -366,10 +370,10 @@ export function ReservationSection({
             <CardTitle>予約内容</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
+            <div className="space-y-8">
+              <div className="flex flex-col md:flex-row items-start gap-6">
                 {selectedMenu.image_url && (
-                  <div className="w-24 h-24 relative rounded-lg overflow-hidden flex-shrink-0">
+                  <div className="w-full md:w-32 h-32 relative rounded-lg overflow-hidden flex-shrink-0">
                     <Image
                       src={selectedMenu.image_url}
                       alt={selectedMenu.name}
@@ -378,23 +382,23 @@ export function ReservationSection({
                     />
                   </div>
                 )}
-                <div>
-                  <h2 className="text-xl font-bold mb-2">{selectedMenu.name}</h2>
-                  <p className="text-muted-foreground mb-2">{selectedMenu.description}</p>
-                  <div className="flex items-center space-x-4">
-                    <p className="text-sm">
-                      <span className="font-medium">所要時間:</span> {selectedMenu.duration}分
-                    </p>
-                    <p className="text-lg font-bold">
+                <div className="flex-grow">
+                  <h2 className="text-xl font-bold mb-3">{selectedMenu.name}</h2>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{selectedMenu.description}</p>
+                  <div className="flex flex-wrap gap-4">
+                    <span className="text-sm bg-primary/5 px-3 py-1 rounded-full">
+                      所要時間: {selectedMenu.duration}分
+                    </span>
+                    <span className="text-lg font-bold">
                       ¥{selectedMenu.price.toLocaleString()}
-                    </p>
+                    </span>
                   </div>
                 </div>
               </div>
 
-              <div className="border-t pt-4">
-                <h3 className="font-medium mb-2">予約日時</h3>
-                <p className="text-lg">
+              <div className="border-t pt-6">
+                <h3 className="font-medium mb-3">予約日時</h3>
+                <p className="text-lg mb-2">
                   {format(new Date(selectedSlot.date), "M月d日", { locale: ja })}
                   {" "}
                   {format(new Date(`2000-01-01T${selectedSlot.start_time}`), "H:mm", {
@@ -431,7 +435,7 @@ export function ReservationSection({
   }
 
   return (
-    <div className="container py-8">
+    <div className="container px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">予約する</h1>
       {!selectedMenu ? (
         // メニュー選択
@@ -440,7 +444,7 @@ export function ReservationSection({
             <CardTitle>メニューを選択</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {menuItems.map(renderMenuItem)}
             </div>
           </CardContent>
@@ -448,10 +452,10 @@ export function ReservationSection({
       ) : (
         // 日時選択
         <div className="space-y-6">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 p-4 bg-primary/5 rounded-lg">
+            <div className="flex flex-col md:flex-row items-start gap-4">
               {selectedMenu.image_url && (
-                <div className="w-16 h-16 relative rounded-lg overflow-hidden flex-shrink-0">
+                <div className="w-20 h-20 relative rounded-lg overflow-hidden flex-shrink-0">
                   <Image
                     src={selectedMenu.image_url}
                     alt={selectedMenu.name}
@@ -461,13 +465,22 @@ export function ReservationSection({
                 </div>
               )}
               <div>
-                <h2 className="font-medium">{selectedMenu.name}</h2>
-                <p className="text-sm text-muted-foreground">
-                  ¥{selectedMenu.price.toLocaleString()} / {selectedMenu.duration}分
-                </p>
+                <h2 className="text-lg font-medium mb-2">{selectedMenu.name}</h2>
+                <div className="flex flex-wrap gap-2">
+                  <span className="text-sm bg-white/50 px-3 py-1 rounded-full">
+                    ¥{selectedMenu.price.toLocaleString()}
+                  </span>
+                  <span className="text-sm bg-white/50 px-3 py-1 rounded-full">
+                    {selectedMenu.duration}分
+                  </span>
+                </div>
               </div>
             </div>
-            <Button variant="outline" onClick={() => onMenuSelect(null)}>
+            <Button 
+              variant="outline" 
+              onClick={() => onMenuSelect(null)}
+              className="w-full md:w-auto"
+            >
               メニューを変更
             </Button>
           </div>
@@ -487,9 +500,10 @@ export function ReservationSection({
                 onSelect={handleDateSelect}
                 locale={ja}
                 disabled={(date) => date < new Date()}
+                className="rounded-lg border"
               />
               <div className="border-t pt-6">
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {isLoading ? (
                     <p className="text-muted-foreground">読み込み中...</p>
                   ) : dailySlots.length === 0 ? (
