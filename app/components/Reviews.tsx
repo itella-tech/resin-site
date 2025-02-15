@@ -21,13 +21,24 @@ const reviews = [
 
 export function Reviews() {
   return (
-    <section className="py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8">お客様の声</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <section className="py-16 relative">
+      <div className="absolute inset-0 bg-[#91bdd6]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+      <div className="absolute inset-0" style={{
+        backgroundImage: `
+          radial-gradient(circle at 50% 50%, transparent 10%, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.1) 15%, transparent 15%),
+          radial-gradient(circle at 0% 50%, transparent 20%, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.08) 25%, transparent 25%),
+          radial-gradient(circle at 100% 50%, transparent 20%, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.08) 25%, transparent 25%)
+        `,
+        backgroundSize: '100px 100px, 160px 160px, 160px 160px',
+        backgroundPosition: '0 0, 0 0, 0 0'
+      }} />
+      <div className="relative container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-12 text-white">お客様の声</h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
+            <Card key={index} className="hover:shadow-lg transition-shadow bg-white/95">
+              <CardContent className="p-6 relative">
                 <div className="flex mb-4">
                   {[...Array(review.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />

@@ -29,7 +29,7 @@ const scheduleSteps = [
   {
     step: "STEP.5",
     title: "レジンコーティング",
-    description: "最後にレジンを流し込んで、透明感のある美しい仕上がりに。乾燥時間が必要なため、作品は後日のお渡しとなります。",
+    description: "最後にレジンを流し込んで、波を作ります。透明感のある美しい仕上がりに。",
     image: "/tour-schedule/step5.webp",
   },
 ]
