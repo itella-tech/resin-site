@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TourSchedule } from "@/components/TourSchedule";
-import { Card, CardContent } from "@/components/ui/card";
 import { products } from "@/lib/products";
+import { Reviews } from "@/components/Reviews";
 import { useState, useEffect } from "react";
 import { Footer } from "@/components/Footer";
 import {
@@ -118,6 +118,9 @@ export default function ResinArtExperience() {
             <h2 className="text-3xl font-bold text-center mb-12 text-white">体験の魅力</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
               <div className="space-y-6">
+                <div className="bg-white/95 rounded-xl p-6 shadow-lg">
+                  <h3 className="text-xl font-bold text-ocean-dark mb-3">こんな素敵な作品が作れます</h3>
+                </div>
                 <Carousel 
                   className="w-full aspect-[4/3]" 
                   opts={{ loop: true, align: "start" }}
@@ -199,6 +202,16 @@ export default function ResinArtExperience() {
                 <div>
                   <div className="flex items-center gap-4 mb-4">
                     <span className="bg-pink-500 text-white px-4 py-1 rounded-full text-sm font-bold">POINT.4</span>
+                    <h3 className="text-2xl font-bold text-yellow-400">はじめてでも安心</h3>
+                  </div>
+                  <p className="text-gray-700">
+                    経験豊富なスタッフが丁寧にサポート！初めての方でも簡単な工程から始めて、
+                    ステップバイステップで素敵な作品を作ることができます。
+                  </p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="bg-pink-500 text-white px-4 py-1 rounded-full text-sm font-bold">POINT.5</span>
                     <h3 className="text-2xl font-bold text-yellow-400">石垣旅行を全力でサポート</h3>
                   </div>
                   <p className="text-gray-700">
@@ -385,38 +398,7 @@ export default function ResinArtExperience() {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              お客様の声
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((index) => (
-                <Card key={index}>
-                  <CardContent className="p-6">
-                    <p className="mb-4">
-                      「素晴らしい体験でした！スタッフの方々も親切で、思い出に残る作品が作れました。」
-                    </p>
-                    <div className="flex items-center">
-                      <Image
-                        src={`/placeholder.svg?height=50&width=50&text=顧客${index}`}
-                        alt={`顧客${index}`}
-                        width={50}
-                        height={50}
-                        className="rounded-full mr-4"
-                      />
-                      <div>
-                        <p className="font-semibold">山田 花子さん</p>
-                        <p className="text-sm text-gray-500">東京から</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Reviews />
 
       {/* Store Information */}
       <div className="border-t border-gray-100">
