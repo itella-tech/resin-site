@@ -1,19 +1,19 @@
 export const carouselImages = [
-  { src: "/ocean_board.webp", alt: "マングローブの写真1" },
-  { src: "/ocean_board_1.webp", alt: "マングローブの写真2" },
-  { src: "/couple_board.webp", alt: "マングローブの写真3" },
-  { src: "/couple_board2.webp", alt: "マングローブの写真4" },
-  { src: "/inside.webp", alt: "マングローブの写真5" },
-  { src: "/outside.webp", alt: "マングローブの写真6" },
+  { src: "/photo_board2.webp", alt: "レジンアートの写真1" },
+  { src: "/ocean_board.webp", alt: "レジンアートの写真2" },
+  { src: "/photo_board1.webp", alt: "レジンアートの写真3" },
+  { src: "/ocean_board_1.webp", alt: "レジンアートの写真4" },
+  { src: "/couple_board.webp", alt: "レジンアートの写真5" },
+  { src: "/couple_board2.webp", alt: "レジンアートの写真6" },
 ] as const;
 
 export const thumbnailImages = [
+  "/photo_board2.webp",
   "/ocean_board.webp",
+  "/photo_board1.webp",
   "/ocean_board_1.webp",
   "/couple_board.webp",
   "/couple_board2.webp",
-  "/inside.webp",
-  "/outside.webp",
 ] as const;
 
 export const points = [
