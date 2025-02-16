@@ -178,6 +178,8 @@ export function ReservationSection({
     onStateChange(false)
     onStepChange("select")
     onSlotSelect(null)
+    onMenuSelect(null)
+    setSelectedDate(new Date())
     window.location.href = "/lp#booking"
   }
 
