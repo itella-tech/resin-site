@@ -8,6 +8,15 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "れじこら工房",
   description: "石垣島で海の思い出を形に - 美しい海をイメージしたレジンアート体験",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/logo_favicon.png", type: "image/png" }
+    ],
+    apple: [
+      { url: "/logo_favicon.png", type: "image/png" }
+    ]
+  }
 };
 
 export default function RootLayout({
