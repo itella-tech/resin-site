@@ -1,3 +1,14 @@
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "石垣島の思い出づくり体験 - レジンアートで作る特別な思い出 | れじこら工房",
+  description: "石垣島で海の思い出を形に - 美しい海をイメージしたレジンアート体験",
+  openGraph: {
+    title: "石垣島の思い出づくり体験 - レジンアートで作る特別な思い出 | れじこら工房",
+    description: "石垣島で海の思い出を形に - 美しい海をイメージしたレジンアート体験",
+  },
+}
+
 import { Header } from "@/components/lp/Header"
 import { Hero } from "@/components/lp/Hero"
 import { Lead } from "@/components/lp/Lead"
