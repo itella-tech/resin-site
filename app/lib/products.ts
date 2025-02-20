@@ -2,7 +2,7 @@ export const products = [
   {
     id: 1,
     title: "シンプルレジンアート！【1時間30分】海を彩るレジンアート体験！",
-    price: 6000,
+    price: 3000,
     images: [
       "/ocean_board.webp",
       "/ocean_board_1.webp"
@@ -60,7 +60,7 @@ export const products = [
   {
     id: 2,
     title: "フォトレジンアート！【1時間30分】思い出の写真をレジンアートに！",
-    price: 10000,
+    price: 6000,
     images: [
       "/photo_board_1.webp",
       "/photo_board_2.webp"
