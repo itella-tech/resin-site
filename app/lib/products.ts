@@ -36,7 +36,7 @@ export const products = [
 
       《基本情報》
       ・制作時間：1時間30分
-      ・料金：6,000円（税込）
+      ・料金：3,000円（税込）
       ・場所：石垣市平得 OK商店
     `,
     highlights: [
@@ -60,7 +60,7 @@ export const products = [
   {
     id: 2,
     title: "フォトレジンアート！【1時間30分】思い出の写真をレジンアートに！",
-    price: 6000,
+    price: 5000,
     images: [
       "/photo_board_1.webp",
       "/photo_board_2.webp"
@@ -97,7 +97,7 @@ export const products = [
 
       《基本情報》
       ・制作時間：1時間30分
-      ・料金：10,000円（税込）
+      ・料金：5,000円（税込）
       ・場所：石垣市平得 OK商店
     `,
     highlights: [

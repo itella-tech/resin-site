@@ -20,7 +20,7 @@ const products = [
   {
     id: 2,
     title: "フォトレジンアート！【1時間30分】思い出の写真をレジンアートに！",
-    price: 6000,
+    price: 5000,
     images: [
       "/photo_board_2.webp",
       "/photo_board_1.webp"
