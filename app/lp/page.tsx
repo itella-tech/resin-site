@@ -21,6 +21,7 @@ import { FAQ } from "@/components/lp/FAQ"
 import { Reviews } from "@/components/Reviews"
 import { StoreInfo } from "@/components/lp/StoreInfo"
 import { Footer } from "@/components/Footer"
+import { ScrollCTA } from "@/components/lp/ScrollCTA"
 
 export default function ResinArtExperience() {
   return (
@@ -36,6 +37,7 @@ export default function ResinArtExperience() {
         <FAQ />
         <Reviews />
         <StoreInfo />
+        <ScrollCTA />
       </main>
       <Footer />
     </div>
