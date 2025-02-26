@@ -49,47 +49,35 @@ export function Hero({ content }: HeroProps) {
           </p>
           
           {/* 特徴バッジエリア（モバイル用） */}
-          <div className="absolute bottom-4 left-0 right-0 flex justify-between items-center px-4 z-10">
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1 z-10">
             <div className="flex flex-col items-center">
-              <div className="bg-white rounded-full p-1">
-                <Image
-                  src="/sameDayBookingOK.png"
-                  alt="当日予約OK"
-                  width={80}
-                  height={80}
-                  className="object-contain"
-                  placeholder="empty"
-                />
-              </div>
-              <span className="text-sm font-medium text-white text-center mt-1 bg-black/50 px-2 py-1 rounded">当日予約OK</span>
+              <svg width="140" height="140" viewBox="0 0 200 200" className="w-32 h-32">
+                <circle cx="100" cy="100" r="90" fill="#e11d48" />
+                <circle cx="100" cy="100" r="80" fill="none" stroke="white" strokeWidth="3" strokeDasharray="5,5" />
+                <path d="M100,10 L110,30 L130,20 L130,40 L150,40 L140,60 L160,70 L140,80 L150,100 L130,100 L130,120 L110,110 L100,130 L90,110 L70,120 L70,100 L50,100 L60,80 L40,70 L60,60 L50,40 L70,40 L70,20 L90,30 Z" fill="#e11d48" />
+                <text x="100" y="85" textAnchor="middle" fill="#fde047" fontWeight="bold" fontSize="42">当日</text>
+                <text x="100" y="125" textAnchor="middle" fill="#fde047" fontWeight="bold" fontSize="42">予約OK</text>
+              </svg>
             </div>
             
             <div className="flex flex-col items-center">
-              <div className="bg-white rounded-full p-1">
-                <Image
-                  src="/child_ok.png"
-                  alt="お子様OK"
-                  width={80}
-                  height={80}
-                  className="object-contain"
-                  placeholder="empty"
-                />
-              </div>
-              <span className="text-sm font-medium text-white text-center mt-1 bg-black/50 px-2 py-1 rounded">お子様OK</span>
+              <svg width="140" height="140" viewBox="0 0 200 200" className="w-32 h-32">
+                <circle cx="100" cy="100" r="90" fill="#e11d48" />
+                <circle cx="100" cy="100" r="80" fill="none" stroke="white" strokeWidth="3" strokeDasharray="5,5" />
+                <path d="M100,10 L110,30 L130,20 L130,40 L150,40 L140,60 L160,70 L140,80 L150,100 L130,100 L130,120 L110,110 L100,130 L90,110 L70,120 L70,100 L50,100 L60,80 L40,70 L60,60 L50,40 L70,40 L70,20 L90,30 Z" fill="#e11d48" />
+                <text x="100" y="85" textAnchor="middle" fill="#fde047" fontWeight="bold" fontSize="42">お子様</text>
+                <text x="100" y="125" textAnchor="middle" fill="#fde047" fontWeight="bold" fontSize="42">OK</text>
+              </svg>
             </div>
             
             <div className="flex flex-col items-center">
-              <div className="bg-white rounded-full p-1">
-                <Image
-                  src="/private.png"
-                  alt="一組貸切"
-                  width={80}
-                  height={80}
-                  className="object-contain"
-                  placeholder="empty"
-                />
-              </div>
-              <span className="text-sm font-medium text-white text-center mt-1 bg-black/50 px-2 py-1 rounded">一組貸切</span>
+              <svg width="140" height="140" viewBox="0 0 200 200" className="w-32 h-32">
+                <circle cx="100" cy="100" r="90" fill="#e11d48" />
+                <circle cx="100" cy="100" r="80" fill="none" stroke="white" strokeWidth="3" strokeDasharray="5,5" />
+                <path d="M100,10 L110,30 L130,20 L130,40 L150,40 L140,60 L160,70 L140,80 L150,100 L130,100 L130,120 L110,110 L100,130 L90,110 L70,120 L70,100 L50,100 L60,80 L40,70 L60,60 L50,40 L70,40 L70,20 L90,30 Z" fill="#e11d48" />
+                <text x="100" y="85" textAnchor="middle" fill="#fde047" fontWeight="bold" fontSize="42">一組</text>
+                <text x="100" y="125" textAnchor="middle" fill="#fde047" fontWeight="bold" fontSize="42">貸切</text>
+              </svg>
             </div>
           </div>
         </div>
@@ -105,12 +93,12 @@ export function Hero({ content }: HeroProps) {
             className="flex items-center gap-3 cursor-pointer"
             onClick={scrollToBooking}
           >
-            <div className="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+            <div className="relative w-32 h-32 rounded-lg overflow-hidden flex-shrink-0">
               <Image
                 src="/photo_board_1.webp"
                 alt="フォトレジンアートの例"
                 fill
-                className="object-cover"
+                className="object-contain"
                 placeholder="empty"
               />
             </div>
@@ -132,7 +120,7 @@ export function Hero({ content }: HeroProps) {
         <div className="flex flex-col gap-2">
           <Link href={`tel:${storeInfo.tel}`} className="block w-full">
             <Image
-              src="/phone_book.png"
+              src="/phone_book.svg"
               alt="電話予約"
               width={300}
               height={60}
@@ -174,51 +162,7 @@ export function Hero({ content }: HeroProps) {
             {content.description}
           </p>
           
-          {/* デスクトップ用特徴バッジエリア */}
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-12">
-            {/* 特徴バッジ */}
-            <div className="flex flex-col items-center">
-              <div className="bg-white/90 rounded-full p-2">
-                <Image
-                  src="/sameDayBookingOK.png"
-                  alt="当日予約OK"
-                  width={140}
-                  height={140}
-                  className="object-contain hover:scale-105 transition-transform"
-                  placeholder="empty"
-                />
-              </div>
-              <span className="text-sm font-bold text-white text-center mt-2 bg-black/70 px-3 py-1 rounded-full">当日予約OK</span>
-            </div>
-            
-            <div className="flex flex-col items-center">
-              <div className="bg-white/90 rounded-full p-2">
-                <Image
-                  src="/child_ok.png"
-                  alt="お子様OK"
-                  width={140}
-                  height={140}
-                  className="object-contain hover:scale-105 transition-transform"
-                  placeholder="empty"
-                />
-              </div>
-              <span className="text-sm font-bold text-white text-center mt-2 bg-black/70 px-3 py-1 rounded-full">お子様OK</span>
-            </div>
-            
-            <div className="flex flex-col items-center">
-              <div className="bg-white/90 rounded-full p-2">
-                <Image
-                  src="/private.png"
-                  alt="一組貸切"
-                  width={140}
-                  height={140}
-                  className="object-contain hover:scale-105 transition-transform"
-                  placeholder="empty"
-                />
-              </div>
-              <span className="text-sm font-bold text-white text-center mt-2 bg-black/70 px-3 py-1 rounded-full">一組貸切</span>
-            </div>
-          </div>
+          {/* デスクトップ用ではバッジを表示しない */}
         </div>
       </section>
     </>
