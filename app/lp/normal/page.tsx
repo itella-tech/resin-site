@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 }
 
 import { Hero } from "@/components/lp/Hero"
-import { Lead } from "@/components/lp/Lead"
 import { normalContent } from "@/components/lp/content"
 import { ExperienceHighlights } from "@/components/lp/ExperienceHighlights"
 import { ExperiencePlans } from "@/components/lp/ExperiencePlans"
