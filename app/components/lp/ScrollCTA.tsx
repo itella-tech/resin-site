@@ -19,7 +19,7 @@ export function ScrollCTA() {
   if (!isVisible) return null;
   
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg md:bottom-6 md:left-auto md:right-6 md:p-0 md:bg-transparent md:border-0 md:backdrop-blur-none transition-all duration-300 ease-in-out">
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg md:bottom-6 md:p-4 transition-all duration-300 ease-in-out">
       <button
         className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-4 px-6 rounded-lg transition duration-200 flex items-center justify-center gap-2 shadow-md md:shadow-lg"
         onClick={() => {
