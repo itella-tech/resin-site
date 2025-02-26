@@ -22,11 +22,24 @@ export function Hero({ content }: HeroProps) {
     <>
       {/* モバイル用ヒーロー */}
       <section
-        className="relative h-[50vh] bg-cover bg-center md:hidden"
-        style={{
-          backgroundImage: `url('${content.mobileImage}')`,
-        }}
+        className="relative h-[50vh] overflow-hidden md:hidden"
       >
+        <div className="absolute inset-0">
+          <Image
+            src={content.mobileImage}
+            alt="ヒーロー画像"
+            fill
+            sizes="100vw"
+            priority
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+            className="object-cover"
+            style={{ 
+              objectPosition: 'center',
+              transition: 'transform 0.5s ease-in-out, filter 0.5s ease-in-out',
+            }}
+          />
+        </div>
         <div className="absolute inset-0 bg-black bg-opacity-50" />
         <div className="relative container mx-auto px-4 h-full flex flex-col justify-center items-start text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 whitespace-pre-line">
@@ -46,6 +59,8 @@ export function Hero({ content }: HeroProps) {
                   width={80}
                   height={80}
                   className="object-contain"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQYlWNgYGD4z4AEGJElGBkZIQwmJM5/BihgZGRkQJZgQpZgQJZA1oBsKgMDAwOKk5AVILuVEVkjAwMDAKXnBBj4xOPBAAAAAElFTkSuQmCC"
                 />
               </div>
               <span className="text-sm font-medium text-white text-center mt-1 bg-black/50 px-2 py-1 rounded">当日予約OK</span>
@@ -59,6 +74,8 @@ export function Hero({ content }: HeroProps) {
                   width={80}
                   height={80}
                   className="object-contain"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQYlWNgYGD4z4AEGJElGBkZIQwmJM5/BihgZGRkQJZgQpZgQJZA1oBsKgMDAwOKk5AVILuVEVkjAwMDAKXnBBj4xOPBAAAAAElFTkSuQmCC"
                 />
               </div>
               <span className="text-sm font-medium text-white text-center mt-1 bg-black/50 px-2 py-1 rounded">お子様OK</span>
@@ -72,6 +89,8 @@ export function Hero({ content }: HeroProps) {
                   width={80}
                   height={80}
                   className="object-contain"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQYlWNgYGD4z4AEGJElGBkZIQwmJM5/BihgZGRkQJZgQpZgQJZA1oBsKgMDAwOKk5AVILuVEVkjAwMDAKXnBBj4xOPBAAAAAElFTkSuQmCC"
                 />
               </div>
               <span className="text-sm font-medium text-white text-center mt-1 bg-black/50 px-2 py-1 rounded">一組貸切</span>
@@ -96,6 +115,8 @@ export function Hero({ content }: HeroProps) {
                 alt="フォトレジンアートの例"
                 fill
                 className="object-cover"
+                placeholder="blur"
+                blurDataURL="data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoIAAgAAkA4JZwCdAEO/f//gAD++MrQN+wfQPoDWbgAzpP/gfxvUAA="
               />
             </div>
             <div className="flex-1">
@@ -121,6 +142,8 @@ export function Hero({ content }: HeroProps) {
               width={300}
               height={60}
               className="w-full h-auto"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQYlWNgYGD4z4AEGJElGBkZIQwmJM5/BihgZGRkQJZgQpZgQJZA1oBsKgMDAwOKk5AVILuVEVkjAwMDAKXnBBj4xOPBAAAAAElFTkSuQmCC"
             />
           </Link>
           <div className="flex justify-center">
@@ -131,11 +154,24 @@ export function Hero({ content }: HeroProps) {
 
       {/* デスクトップ用ヒーロー */}
       <section
-        className="relative h-[80vh] bg-cover bg-center hidden md:block"
-        style={{
-          backgroundImage: `url('${content.desktopImage}')`,
-        }}
+        className="relative h-[80vh] overflow-hidden hidden md:block"
       >
+        <div className="absolute inset-0">
+          <Image
+            src={content.desktopImage}
+            alt="ヒーロー画像"
+            fill
+            sizes="100vw"
+            priority
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+            className="object-cover"
+            style={{ 
+              objectPosition: 'center',
+              transition: 'transform 0.5s ease-in-out, filter 0.5s ease-in-out',
+            }}
+          />
+        </div>
         <div className="absolute inset-0 bg-black bg-opacity-50" />
         <div className="relative container mx-auto px-4 h-full flex flex-col justify-center items-start text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 whitespace-pre-line">
@@ -156,6 +192,8 @@ export function Hero({ content }: HeroProps) {
                   width={140}
                   height={140}
                   className="object-contain hover:scale-105 transition-transform"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQYlWNgYGD4z4AEGJElGBkZIQwmJM5/BihgZGRkQJZgQpZgQJZA1oBsKgMDAwOKk5AVILuVEVkjAwMDAKXnBBj4xOPBAAAAAElFTkSuQmCC"
                 />
               </div>
               <span className="text-sm font-bold text-white text-center mt-2 bg-black/70 px-3 py-1 rounded-full">当日予約OK</span>
@@ -169,6 +207,8 @@ export function Hero({ content }: HeroProps) {
                   width={140}
                   height={140}
                   className="object-contain hover:scale-105 transition-transform"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQYlWNgYGD4z4AEGJElGBkZIQwmJM5/BihgZGRkQJZgQpZgQJZA1oBsKgMDAwOKk5AVILuVEVkjAwMDAKXnBBj4xOPBAAAAAElFTkSuQmCC"
                 />
               </div>
               <span className="text-sm font-bold text-white text-center mt-2 bg-black/70 px-3 py-1 rounded-full">お子様OK</span>
@@ -182,6 +222,8 @@ export function Hero({ content }: HeroProps) {
                   width={140}
                   height={140}
                   className="object-contain hover:scale-105 transition-transform"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVQYlWNgYGD4z4AEGJElGBkZIQwmJM5/BihgZGRkQJZgQpZgQJZA1oBsKgMDAwOKk5AVILuVEVkjAwMDAKXnBBj4xOPBAAAAAElFTkSuQmCC"
                 />
               </div>
               <span className="text-sm font-bold text-white text-center mt-2 bg-black/70 px-3 py-1 rounded-full">一組貸切</span>
