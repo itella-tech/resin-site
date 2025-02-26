@@ -26,8 +26,8 @@ export const normalContent: LPContent = {
 
 export const rainyContent: LPContent = {
   hero: {
-    title: "雨の日でも楽しめる\n石垣島の思い出づくり。",
-    description: "雨でも大丈夫。\n室内でゆったりと楽しめる「レジンアート体験」があります。",
+    title: "雨の日でも楽しめる\n思い出づくり。",
+    description: "雨でも大丈夫。\n室内でゆったりと。",
     mobileImage: "/lp-hero.webp",
     desktopImage: "/lp-hero2.webp",
   },
