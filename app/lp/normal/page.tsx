@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   },
 }
 
-import { Header } from "@/components/lp/Header"
 import { Hero } from "@/components/lp/Hero"
 import { Lead } from "@/components/lp/Lead"
 import { normalContent } from "@/components/lp/content"
@@ -26,10 +25,8 @@ import { ScrollCTA } from "@/components/lp/ScrollCTA"
 export default function ResinArtExperience() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
       <main className="flex-grow">
         <Hero content={normalContent.hero} />
-        <Lead content={normalContent.lead} />
         <ExperienceHighlights />
         <ExperiencePlans />
         <TourSchedule />
