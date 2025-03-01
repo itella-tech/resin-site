@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['resi-cola.netlify.app'],
+    domains: ['resi-cola.netlify.app', 'resi-cola.pages.dev'],
     unoptimized: true, // 画像最適化を無効化して、静的なHTMLを生成
   },
   async headers() {
