@@ -21,14 +21,14 @@ export function Hero({ content }: HeroProps) {
     <>
       {/* モバイル用ヒーロー */}
       <section
-        className="relative h-[50vh] overflow-hidden md:hidden"
+        className="relative h-[40vh] overflow-hidden md:hidden"
       >
         <div className="absolute inset-0">
           <Image
             src={content.mobileImage}
             alt="ヒーロー画像"
             fill
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
             priority
             placeholder="empty"
             className="object-cover"

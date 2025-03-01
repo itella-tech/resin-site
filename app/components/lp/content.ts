@@ -14,8 +14,8 @@ export type LPContent = {
 export const normalContent: LPContent = {
   hero: {
     title: "石垣島の\n新ものづくり体験",
-    description: "沖縄の海をイメージした\nオリジナルのレジンアート体験。",
-    mobileImage: "/ezgif-1c01f59523ef32.gif",
+    description: "",
+    mobileImage: "/ezgif-1e02702a16305e.webp",
     desktopImage: "/lp-hero2.webp",
   },
   lead: {
