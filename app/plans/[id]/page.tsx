@@ -19,4 +19,4 @@ export default async function PlanDetailPage({ params }: Props) {
   return <PlanDetail product={product} />;
 }
 
-export { generateMetadata, generateStaticParams } from "./metadata";
+export { generateMetadata } from "./metadata";
