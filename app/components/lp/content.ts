@@ -13,7 +13,7 @@ export type LPContent = {
 
 export const normalContent: LPContent = {
   hero: {
-    title: "石垣島の\n新ものづくり体験",
+    title: "石垣島の\nレジンアート体験",
     description: "",
     mobileImage: "/ezgif-1e02702a16305e.webp",
     desktopImage: "/lp-hero2.webp",
