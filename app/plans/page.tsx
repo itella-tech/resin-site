@@ -1,6 +1,8 @@
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/products";
 
+export const runtime = "edge";
+
 export default async function PlansPage() {
   return (
     <div className="container mx-auto px-4 py-8">

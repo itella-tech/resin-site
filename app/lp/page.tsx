@@ -1,5 +1,7 @@
 import { Metadata } from "next"
 
+export const runtime = "edge";
+
 export const metadata: Metadata = {
   title: "雨の日の室内ものづくり体験 - 石垣島のレジンアート体験 | れじこら工房",
   description: "雨の日は室内で思い出作り - 石垣島で楽しむレジンアート体験",
