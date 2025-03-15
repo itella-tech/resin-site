@@ -2,8 +2,6 @@ import { products } from "@/lib/products";
 import { notFound } from "next/navigation";
 import { PlanDetail } from "./PlanDetail";
 
-export const runtime = "edge";
-
 type Props = {
   params: Promise<{ id: string }>;
 };

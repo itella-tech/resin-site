@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 
-export const runtime = "edge";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
