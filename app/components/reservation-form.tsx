@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { DailyTimeSlot, MenuItem, ReservationFormData } from "@/types/reservation"
 import { createClientSupabaseClient } from "@/lib/supabase"
 import { useToast } from "@/hooks/use-toast"
-import { sendConfirmationEmail } from "@/server/actions/email/send-confirmation"
+// import { sendConfirmationEmail } from "@/server/actions/email/send-confirmation"
 
 const formSchema = z.object({
   name: z.string().min(1, "お名前を入力してください"),
@@ -94,19 +94,36 @@ export function ReservationForm({ slot, menu, onSuccess, onCancel }: Reservation
         menu_id: menu.menu_id
       }
       
-      const { success: emailSuccess } = await sendConfirmationEmail(emailData)
-      
-      if (!emailSuccess) {
+      try {
+        const response = await fetch('/api/email/send-confirmation', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(emailData),
+        });
+        
+        const result = await response.json();
+        
+        if (!result.success) {
+          toast({
+            title: "メール送信に失敗しました",
+            description: "予約は完了していますが、確認メールの送信に失敗しました",
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "予約が完了しました",
+            description: "ご予約の確認メールをお送りしました",
+          });
+        }
+      } catch (error) {
+        console.error('メール送信エラー:', error);
         toast({
           title: "メール送信に失敗しました",
           description: "予約は完了していますが、確認メールの送信に失敗しました",
           variant: "destructive",
-        })
-      } else {
-        toast({
-          title: "予約が完了しました",
-          description: "ご予約の確認メールをお送りしました",
-        })
+        });
       }
 
       onSuccess(emailData)

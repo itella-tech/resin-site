@@ -19,6 +19,18 @@ interface ReservationConfirmationEmailProps {
 export function ReservationConfirmationEmail({
   reservation,
 }: ReservationConfirmationEmailProps) {
+  // 時間から秒数を削除
+  if (reservation.time) {
+    // "HH:MM:SS - HH:MM:SS" 形式の時間から秒数だけを削除
+    const timePattern = /(\d{1,2}:\d{2}):\d{2}\s*-\s*(\d{1,2}:\d{2}):\d{2}/;
+    const match = reservation.time.match(timePattern);
+    
+    if (match) {
+      // 秒数を除いた時間に置き換え
+      reservation.time = `${match[1]} - ${match[2]}`;
+    }
+  }
+  
   const previewText = `${reservation.planName}のご予約ありがとうございます`;
 
   return (

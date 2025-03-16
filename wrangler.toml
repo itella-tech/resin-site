@@ -3,4 +3,21 @@ compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
 # Pages設定
-pages_build_output_dir = ".vercel/output/static"
+pages_build_output_dir = ".next"
+
+# 環境変数の設定
+# 注意: 実際の値はCloudflareダッシュボードで設定する必要があります
+[vars]
+# 以下の環境変数をCloudflareダッシュボードで設定してください
+# RESEND_API_KEY = "your-resend-api-key"
+# RESEND_FROM_EMAIL = "your-from-email@example.com"
+
+# 環境変数の設定方法:
+# 1. Cloudflareダッシュボードにログイン
+# 2. 該当するWorkerまたはPagesプロジェクトを選択
+# 3. 「Settings」タブを選択
+# 4. 「Environment Variables」セクションで変数を追加
+#    - 変数名: RESEND_API_KEY
+#    - 値: ResendのAPIキー（https://resend.com/api-keysで取得）
+#    - 変数名: RESEND_FROM_EMAIL
+#    - 値: 送信元メールアドレス（例: noreply@yourdomain.com）
