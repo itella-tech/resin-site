@@ -25,24 +25,18 @@ export const points = [
   },
   {
     number: 2,
-    title: "前日までの予約で市街地送迎OK",
-    description: "石垣市街地エリアなら送迎無料！前日までのご予約で、ホテルや指定場所までお迎えに上がります。",
-    icon: "🚗",
-  },
-  {
-    number: 3,
     title: "お連れ様見学OK",
     description: "体験されない方も一緒にお越しいただけます。大切な方の作品作りを一緒に楽しみ、思い出を共有できます。",
     icon: "👥",
   },
   {
-    number: 4,
+    number: 3,
     title: "雨の日でもOK",
     description: "室内アクティビティだから、雨でも快適！天候を気にせず、ゆったりと作品作りを楽しめます。",
     icon: "☔️",
   },
   {
-    number: 5,
+    number: 4,
     title: "当日予約OK",
     description: "集合時間に間に合えばご予約可能！急な予定変更や「今すぐ体験したい」にも柔軟に対応します。",
     icon: "✨",

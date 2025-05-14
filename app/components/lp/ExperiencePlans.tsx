@@ -12,7 +12,7 @@ export function ExperiencePlans() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <PlanCard
             title="シンプルレジンアート"
-            price="¥3,000"
+            price="¥5,000"
             imageSrc="/ocean_board.webp"
             imageAlt="シンプルレジンアートの例"
             features="砂浜や波、空などを自由に表現できる、オリジナリティあふれる作品作りが可能です。"
@@ -24,7 +24,7 @@ export function ExperiencePlans() {
           />
           <PlanCard
             title="フォトレジンアート"
-            price="¥5,000"
+            price="¥7,500"
             imageSrc="/photo_board_1.webp"
             imageAlt="フォトレジンアートの例"
             features="思い出の写真と美しい海のアートを組み合わせた、世界に一つだけのフォトフレームを作れます。"
