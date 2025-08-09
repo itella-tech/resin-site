@@ -11,6 +11,7 @@ import { createClientSupabaseClient } from "@/lib/supabase"
 import { useToast } from "@/hooks/use-toast"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { gtag_report_conversion } from "@/lib/gtag"
 
 interface ReservationSectionProps {
   onStateChange: (isFormVisible: boolean) => void
@@ -131,6 +132,14 @@ export function ReservationSection({
       fetchDailySlots(selectedDate)
     }
   }, [selectedDate, fetchDailySlots])
+
+  // 予約確定画面でコンバージョンを発火
+  useEffect(() => {
+    if (currentStep === "complete" && selectedSlot && selectedMenu && reservationData) {
+      // 予約確定画面が表示された時にコンバージョンを報告
+      gtag_report_conversion()
+    }
+  }, [currentStep, selectedSlot, selectedMenu, reservationData])
 
   // 日付が選択された時の処理
   const handleDateSelect = (date: Date | undefined) => {

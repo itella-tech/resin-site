@@ -15,8 +15,8 @@ export const normalContent: LPContent = {
   hero: {
     title: "石垣島の\nレジンアート体験",
     description: "",
-    mobileImage: "/ezgif-1e02702a16305e.webp",
-    desktopImage: "/lp-hero2.webp",
+    mobileImage: "/kids.png",
+    desktopImage: "/kids.png",
   },
   lead: {
     title: "沖縄の海を閉じ込めた、あなただけの作品作り",

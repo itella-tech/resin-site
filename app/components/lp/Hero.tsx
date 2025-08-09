@@ -4,6 +4,7 @@ import Image from "next/image";
 import { type LPContent } from "./content";
 import { storeInfo } from "./StoreInfo/data";
 import { AvailabilityBadge } from "./AvailabilityBadge";
+import { gtag_report_phone_conversion } from "@/lib/gtag";
 
 type HeroProps = {
   content: LPContent["hero"];
@@ -17,26 +18,48 @@ export function Hero({ content }: HeroProps) {
     });
   };
 
+  const handlePhoneClick = () => {
+    // 電話予約のコンバージョンを発火
+    gtag_report_phone_conversion();
+  };
+
   return (
     <>
       {/* モバイル用ヒーロー */}
       <section
         className="relative min-h-[40vh] overflow-hidden md:hidden"
       >
-        <div className="absolute inset-0">
-          <Image
-            src={content.mobileImage}
-            alt="ヒーロー画像"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority
-            placeholder="empty"
-            className="object-cover"
-            style={{ 
-              objectPosition: 'center',
-              transition: 'transform 0.5s ease-in-out, filter 0.5s ease-in-out',
-            }}
-          />
+        <div className="absolute inset-0 flex">
+          <div className="relative w-1/2 h-full">
+            <Image
+              src="/kids.png"
+              alt="子供たちのレジンアート体験"
+              fill
+              sizes="(max-width: 768px) 50vw, 25vw"
+              priority
+              placeholder="empty"
+              className="object-contain"
+              style={{ 
+                objectPosition: 'center',
+                transition: 'transform 0.5s ease-in-out, filter 0.5s ease-in-out',
+              }}
+            />
+          </div>
+          <div className="relative w-1/2 h-full">
+            <Image
+              src="/couple.png"
+              alt="カップルのレジンアート体験"
+              fill
+              sizes="(max-width: 768px) 50vw, 25vw"
+              priority
+              placeholder="empty"
+              className="object-contain"
+              style={{ 
+                objectPosition: 'center',
+                transition: 'transform 0.5s ease-in-out, filter 0.5s ease-in-out',
+              }}
+            />
+          </div>
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-50" />
         <div className="relative container mx-auto px-4 h-full flex flex-col justify-center items-start text-white py-8">
@@ -84,7 +107,7 @@ export function Hero({ content }: HeroProps) {
 
       {/* 電話予約ボタン（モバイル用） */}
       <div className="md:hidden px-4 py-2">
-        <a href={`tel:${storeInfo.tel}`} className="block w-full">
+        <a href={`tel:${storeInfo.tel}`} className="block w-full" onClick={handlePhoneClick}>
           <Image
             src="/phone_book.svg"
             alt="電話予約"
@@ -139,20 +162,37 @@ export function Hero({ content }: HeroProps) {
       <section
         className="relative h-[80vh] overflow-hidden hidden md:block"
       >
-        <div className="absolute inset-0">
-          <Image
-            src={content.desktopImage}
-            alt="ヒーロー画像"
-            fill
-            sizes="100vw"
-            priority
-            placeholder="empty"
-            className="object-cover"
-            style={{ 
-              objectPosition: 'center',
-              transition: 'transform 0.5s ease-in-out, filter 0.5s ease-in-out',
-            }}
-          />
+        <div className="absolute inset-0 flex">
+          <div className="relative w-1/2 h-full">
+            <Image
+              src="/kids.png"
+              alt="子供たちのレジンアート体験"
+              fill
+              sizes="50vw"
+              priority
+              placeholder="empty"
+              className="object-contain"
+              style={{ 
+                objectPosition: 'center',
+                transition: 'transform 0.5s ease-in-out, filter 0.5s ease-in-out',
+              }}
+            />
+          </div>
+          <div className="relative w-1/2 h-full">
+            <Image
+              src="/couple.png"
+              alt="カップルのレジンアート体験"
+              fill
+              sizes="50vw"
+              priority
+              placeholder="empty"
+              className="object-contain"
+              style={{ 
+                objectPosition: 'center',
+                transition: 'transform 0.5s ease-in-out, filter 0.5s ease-in-out',
+              }}
+            />
+          </div>
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-50" />
         <div className="relative container mx-auto px-4 h-full flex flex-col justify-center items-start text-white">

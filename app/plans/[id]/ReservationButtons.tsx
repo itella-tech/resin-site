@@ -1,6 +1,12 @@
 'use client';
 
+import { gtag_report_phone_conversion } from "@/lib/gtag";
+
 export function ReservationButtons() {
+  const handlePhoneClick = () => {
+    // 電話予約のコンバージョンを発火
+    gtag_report_phone_conversion();
+  };
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-4 md:relative md:border-0 md:p-0">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -20,6 +26,7 @@ export function ReservationButtons() {
         <a
           href="tel:0980-82-3522"
           className="block w-full"
+          onClick={handlePhoneClick}
         >
           <button className="w-full bg-ocean hover:bg-ocean-dark text-white font-bold py-4 px-6 rounded-lg transition duration-200 flex items-center justify-center gap-2">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
