@@ -62,6 +62,9 @@ export function ReservationConfirmationEmail({
             <Text style={text}>
               人数: {reservation.number_of_people}名
             </Text>
+            <Text style={text}>
+              電話番号: {reservation.phone_number}
+            </Text>
             {reservation.notes && (
               <Text style={text}>
                 メッセージ: {reservation.notes}
